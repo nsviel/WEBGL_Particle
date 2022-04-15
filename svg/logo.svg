@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <metadata
+     id="metadata61">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.0998546"
+     inkscape:cx="487.84866"
+     inkscape:cy="667.49145"
+     inkscape:window-width="1880"
+     inkscape:window-height="1049"
+     inkscape:window-x="40"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1344">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1340" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop1342" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1233">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1229" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop1231" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6948"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6911"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6874"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6837"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6800"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6763"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6726"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6689"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1233"
+       id="linearGradient1235"
+       x1="122.91115"
+       y1="155.56534"
+       x2="109.06484"
+       y2="155.22269"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.1211895,0,0,5.1211895,-520.71225,-612.75983)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1344"
+       id="linearGradient1346"
+       x1="123.42226"
+       y1="137.80727"
+       x2="127.01124"
+       y2="144.27359"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.1211895,0,0,5.1211895,-520.71225,-612.75983)" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.41594094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 106.91138,137.5081 73.158812,159.25344"
+       id="path1032"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#000000;fill-opacity:0.8414634;stroke:#000000;stroke-width:0.41594094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 86.012977,94.388405 21.384973,-1.261451 -0.48653,44.381146 -33.23255,21.34354 -6.192696,-10.65991 -3.025446,-13.80361 -0.08604,-7.25652 0.937177,-5.31795 4.916342,-12.57446 6.618165,-8.03638 9.166856,-6.814405"
+       id="path12329"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#1c1a1c;fill-opacity:0.82113821;stroke:#000000;stroke-width:0.41594094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 142.74393,155.19987 106.91138,137.5081 v 37.41618 l 10.61484,-1.35593 8.82468,-3.27587 8.08928,-5.68253 5.61569,-5.48198 z"
+       id="path13158"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.41594094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 73.678818,158.85164 c 1.560426,1.64707 3.120392,3.29374 4.67998,4.94 2.048936,1.48166 4.09736,2.96282 6.145426,4.4436 1.922854,1.04043 3.845245,2.08043 5.767228,3.11998 1.859862,0.69378 3.719161,1.38708 5.578148,2.08002 2.096203,0.44145 4.1919,0.8828 6.28728,1.32363 1.59193,0.0553 3.18339,0.11069 4.7745,0.16535 V 137.5081 l -33.232562,21.34349"
+       id="path13894"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:url(#linearGradient1235);stroke-width:0.33287731;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 37.829469,182.16498 69.081911,-44.65688 -0.0918,79.30588 -31.447814,-15.79407 z"
+       id="path871"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:url(#linearGradient1346);stroke-width:0.33287731;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 106.91138,137.5081 0.52405,-82.389386 65.60208,34.648996 -66.12609,47.74039"
+       id="path873"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#009991;fill-opacity:1;stroke:#000000;stroke-width:0.0812196px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 118.4735,138.08281 c -0.85122,0.57604 -1.70245,1.15208 -2.31737,1.84264 -0.61493,0.69056 -0.99349,1.49556 -1.27851,2.18528 -0.28502,0.68971 -0.47648,1.26409 -0.58091,1.90377 -0.10442,0.63968 -0.12182,1.34459 -0.004,2.17791 0.1175,0.83332 0.36988,1.79496 0.6709,2.57578 0.30103,0.78082 0.65065,1.38077 1.15109,1.97038 0.50043,0.58962 1.15163,1.16888 1.86887,1.64344 0.71724,0.47456 1.50048,0.84443 2.27334,1.08708 0.77287,0.24266 1.53532,0.35812 2.39472,0.332 0.8594,-0.0261 1.81573,-0.19381 2.66159,-0.47565 0.84586,-0.28183 1.58123,-0.6778 2.26005,-1.2065 0.67881,-0.52869 1.30105,-1.1901 1.81452,-1.91025 0.51347,-0.72016 0.91814,-1.49905 1.1727,-2.37803 0.25457,-0.87898 0.359,-1.85802 0.31767,-2.75659 -0.0413,-0.89857 -0.22843,-1.71662 -0.49386,-2.46724 -0.26543,-0.75063 -0.60918,-1.43379 -1.10741,-2.07999 -0.49822,-0.6462 -1.15093,-1.25539 -2.37314,-1.84885 -1.22222,-0.59345 -3.01385,-1.17108 -3.8139,-1.44273 -0.80005,-0.27166 -0.60497,-0.23668 1.47389,-0.19504 2.07886,0.0416 1.1032,0.0295 1.8937,0.0393 0.79049,0.01 0.50947,0.58005 0.50947,0.58005 0,0 4.74461,3.47076 4.74461,3.47076 0,0 -0.86769,0.36924 -0.86769,0.36924 0,0 2.34461,5.64923 2.34461,5.64923 0,0 -1.47692,-0.27693 -1.47692,-0.27693 0,0 -1.14461,6.81231 -1.14461,6.81231 0,0 -0.88616,-0.81231 -0.88616,-0.81231 0,0 -4.92923,3.72923 -4.92923,3.72923 0,0 -0.0923,-1.38461 -0.0923,-1.38461 0,0 -8.2523,0.8123 -8.2523,0.8123 0,0 -0.0118,-1.70321 -0.0118,-1.70321 0,0 -5.65593,-4.64755 -5.65593,-4.64755 0,0 0.98936,-1.26546 0.98936,-1.26546 0,0 -1.90671,-7.00893 -1.90671,-7.00893 0,0 2.07285,0.64977 2.07285,0.64977 0,0 1.12744,-5.70839 1.12744,-5.70839 0,0 1.28558,0.92058 1.28558,0.92058 0,0 4.75763,-2.7445 4.75763,-2.7445 0,0 5.33538,0.44308 5.33538,0.44308 0,0 -3.23076,1.36616 -3.23076,1.36616 0,0 2.2523,1.47692 2.2523,1.47692 0,0 -4.94846,0.27552 -4.94846,0.27552"
+       id="path6946"
+       inkscape:path-effect="#path-effect6948"
+       inkscape:original-d="m 118.4735,138.08281 c -0.85116,0.57613 -1.70239,1.15217 -2.5537,1.72814 -0.3785,0.80511 -0.75706,1.61011 -1.13572,2.41504 -0.19139,0.57448 -0.38284,1.14886 -0.57439,1.72316 -0.0173,0.70503 -0.0347,1.40994 -0.0522,2.1148 0.25247,0.96176 0.50485,1.9234 0.75715,2.88499 0.34972,0.60005 0.69934,1.2 1.04888,1.79988 0.6513,0.57937 1.30249,1.15864 1.95361,1.73783 0.78335,0.36996 1.56659,0.73982 2.34976,1.10961 0.76257,0.11556 1.52502,0.23102 2.2874,0.34641 0.95645,-0.16761 1.91278,-0.33529 2.86904,-0.50306 0.73549,-0.39591 1.47086,-0.79188 2.20618,-1.18794 0.62234,-0.66135 1.24458,-1.32275 1.86676,-1.98425 0.40477,-0.77884 0.80944,-1.55773 1.21405,-2.33671 0.10451,-0.97902 0.20895,-1.95806 0.3133,-2.93722 -0.18704,-0.818 -0.37414,-1.63605 -0.56134,-2.4542 -0.34368,-0.68311 -0.68744,-1.36627 -1.03128,-2.04952 -0.65264,-0.60913 -1.30535,-1.21832 -1.95814,-1.8276 -1.79166,-0.57758 -3.58329,-1.15521 -5.37511,-1.73295 0.19174,0.0344 0.38681,0.0694 0.57496,0.10309 3.97025,-0.004 2.99337,0.0817 4.57491,0.0571 l -0.28102,0.57018 4.74461,3.47076 -0.86769,0.36924 2.34461,5.64923 -1.47692,-0.27693 -1.14461,6.81231 -0.88616,-0.81231 -4.92923,3.72923 -0.0923,-1.38461 -8.2523,0.8123 -0.0118,-1.70321 -5.65593,-4.64755 0.98936,-1.26546 -1.90671,-7.00893 2.07285,0.64977 1.12744,-5.70839 1.28558,0.92058 4.75763,-2.7445 5.33538,0.44308 -3.23076,1.36616 2.2523,1.47692 -4.94846,0.27552"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccc"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       inkscape:connector-curvature="0"
+       transform="matrix(5.1211894,0,0,5.1211894,-520.71224,-612.75982)" />
+    <path
+       style="fill:#ffffff;fill-opacity:0.853659;stroke:#000000;stroke-width:0.41594094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 90.673261,80.828367 6.145432,-1.229086 -6.435344,0.21253 z"
+       id="path10572"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g1795"
+       style="fill:#000000;fill-opacity:1"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="matrix(5.1211894,0,0,5.1211894,-520.71224,-612.75982)">
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0224334;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path1629"
+         cx="122.56638"
+         cy="129.00143"
+         r="0.62268853" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.013388;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path1629-5"
+         cx="122.58143"
+         cy="127.42274"
+         r="0.37161398" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.00487471;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path1629-5-8"
+         cx="122.59647"
+         cy="126.35524"
+         r="0.13530852" />
+    </g>
+    <g
+       id="g1790"
+       transform="matrix(-5.1211894,0,0,-5.1211894,721.95495,1068.041)"
+       style="fill:#000000;fill-opacity:1"
+       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0224334;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path1629-1"
+         cx="120.26289"
+         cy="164.45905"
+         r="0.62268853" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.013388;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path1629-5-82"
+         cx="120.27793"
+         cy="162.88034"
+         r="0.37161398" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.00487471;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path1629-5-8-8"
+         cx="120.29298"
+         cy="161.81285"
+         r="0.13530852" />
+    </g>
+  </g>
+</svg>

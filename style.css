@@ -1,0 +1,26 @@
+video{
+	display: none;
+}
+
+#logo {
+  position: absolute;
+  text-align: left;
+  pointer-events: none;
+  width: 100px;
+  z-index:0;
+  left:0;
+}
+
+#glcanvas{
+  z-index:-1;
+}
+
+#entro_title{
+  text-align: center;
+  pointer-events: none;
+  color: black;
+}
+
+#webgl_header{
+  pointer-events: auto;
+}
