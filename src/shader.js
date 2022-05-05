@@ -21,41 +21,40 @@ function create_shader(){
   //-----------------------
 
   // Vertex shader program
-  const shader_vertex = `
-    attribute vec4 in_position;
-    attribute vec4 in_color;
-    uniform mat4 in_mvp;
+  const shader_vertex =
+  `#version 300 es
+  in vec4 in_position;
+  in vec4 in_color;
+  out vec4 frag_color;
 
-    varying lowp vec4 frag_color;
+  void main(){
+    gl_Position = in_position;
+    gl_PointSize = 5.0;
 
-    void main() {
-      gl_Position = in_mvp * in_position;
-      gl_PointSize = 5.0;
-
-      frag_color = in_color;
-    }
+    frag_color = in_color;
+  }
   `;
 
   // Fragment shader program
-  const shader_fragment = `
-    precision highp float;
+  const shader_fragment =
+  `#version 300 es
 
-    uniform bool is_point;
+  precision highp float;
+  uniform bool is_point;
+  in vec4 frag_color;
+  out vec4 out_color;
 
-    varying lowp vec4 frag_color;
-
-    void main(void) {
-      if(is_point){
-        float r = 0.0, delta = 0.0, alpha = 1.0;
-        vec2 cxy = 2.0 * gl_PointCoord - 1.0;
-        r = dot(cxy, cxy);
-        if (r > 1.0) {
-          discard;
-        }
+  void main() {
+    if(is_point){
+      float r = 0.0, delta = 0.0, alpha = 1.0;
+      vec2 cxy = 2.0 * gl_PointCoord - 1.0;
+      r = dot(cxy, cxy);
+      if (r > 1.0) {
+        discard;
       }
-
-      gl_FragColor = frag_color;
     }
+    out_color = frag_color;
+  }
   `;
 
   //-----------------------

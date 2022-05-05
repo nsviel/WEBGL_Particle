@@ -1,4 +1,4 @@
-function create_line(){
+function init_line(){
   //-----------------------
 
   lines.draw = gl.LINES;
@@ -8,65 +8,63 @@ function create_line(){
 function move_line(){
   //-----------------------
 
-  let lim = 0.001;
   let rgb_alpha = info.param.primitiv_alpha;
   let rgb = info.param.primitiv_rgb;
-  let nb_link = 4;
-  let collid_thres = 0.01;
+  let nb_link = info.param.nb_link;
 
-  let XY = new Array();
-  let RGB = new Array();
+  //Check if there is enough point for the number of link
+  if(nb_link >= points.size - 1){
+    nb_link = points.size - 1;
+  }
 
-  for(let i=0; i<points.xy.length; i=i + 2){
-    let dist_min = 1000;
-    let id = -1;
-    let id_2 = -1;
-    let dist_ = new Array();
-
-    //Serach kNN
-    for(let j=0; j<points.xy.length; j=j + 2){
-      let dist = Math.sqrt(Math.pow(points.xy[i] - points.xy[j], 2) + Math.pow(points.xy[i+1] - points.xy[j+1], 2));
-
-      //Line link
-      if(dist != 0){
-        dist_.push([dist, j]);
-      }
-
-      //Collision
-      if(dist != 0 && dist < collid_thres){
-        points.nxy[i] = -points.nxy[i];
-        points.nxy[i+1] = -points.nxy[i+1];
-
-        points.nxy[j] = -points.nxy[j];
-        points.nxy[j+1] = -points.nxy[j+1];
-      }
-    }
-    dist_.sort();
+  let XY = [];
+  let RGB = [];
+  for(let i=0; i<points.xy.length; i++){
+    let dist_vec = knn(i);
 
     //Create line
     for(let j=0; j<nb_link; j++){
-      XY.push(points.xy[i])
-      XY.push(points.xy[i+1])
+      XY.push(points.xy[i]);
+      XY.push(points.xy[dist_vec[j][1]]);
 
-      XY.push(points.xy[dist_[j][1]])
-      XY.push(points.xy[dist_[j][1]+1])
-
-      RGB.push(rgb)
-      RGB.push(rgb)
-      RGB.push(rgb)
-      RGB.push(rgb_alpha)
-
-      RGB.push(rgb)
-      RGB.push(rgb)
-      RGB.push(rgb)
-      RGB.push(rgb_alpha)
+      RGB.push([rgb, rgb, rgb, rgb_alpha])
+      RGB.push([rgb, rgb, rgb, rgb_alpha])
     }
 
   }
 
   lines.xy = XY;
   lines.rgb = RGB;
-  lines.size = XY.length / 2;
+  lines.size = lines.xy.length;
 
   //-----------------------
+}
+function knn(i){
+  //-----------------------
+
+  let collid_thres = 0.01;
+  let dist_vec = new Array();
+
+  for(let j=0; j<points.xy.length; j++){
+    if(i != j){
+      let dist = fct_distance(points.xy[i], points.xy[j])
+
+      //Line link
+      dist_vec.push([dist, j]);
+
+      //Collision
+      if(dist < collid_thres){
+        points.nxy[i][0] = -points.nxy[i][0];
+        points.nxy[i][1] = -points.nxy[i][1];
+
+        points.nxy[j][0] = -points.nxy[j][0];
+        points.nxy[j][1] = -points.nxy[j][1];
+      }
+    }
+  }
+
+  dist_vec.sort();
+
+  //-----------------------
+  return dist_vec
 }

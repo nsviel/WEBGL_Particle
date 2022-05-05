@@ -12,6 +12,7 @@
     <script src="src/point.js" defer></script>
     <script src="src/line.js" defer></script>
     <script src="src/scene.js" defer></script>
+    <script src="src/gui.js" defer></script>
     <script src="src/main.js" defer></script>
   </head>
 
@@ -29,9 +30,17 @@
     <div id="webgl_header">
       <div>
         <!-- Slider nb points -->
-        <input type="range" id="slider_points" onmouseup=slider_points() min="5" max="200" step="1">
+        <input type="range" id="slider_points" min="0" max="200" step="1">
         <input type="text"  id="cpt_points" >
+        <span> Number of points </span>
       </div>
+      <div>
+        <!-- Slider nb links -->
+        <input type="range" id="slider_links" min="0" max="20" step="1">
+        <input type="text"  id="cpt_links" >
+        <span> Number of links </span>
+      </div>
+
       <!-- Webgl canvas -->
       <canvas id="glcanvas" width="1000" height="500"></canvas>
     </div>

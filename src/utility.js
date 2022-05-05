@@ -1,3 +1,21 @@
+var start
+
+// this example takes 2 seconds to run
+function tic(){
+  start = Date.now();
+}
+function toc(){
+  const millis = Date.now() - start;
+  say(millis)
+}
+function fct_distance(pt_1, pt_2){
+  //-----------------------
+
+  let dist = Math.sqrt(Math.pow(pt_1[0] - pt_2[0], 2) + Math.pow(pt_1[1] - pt_2[1], 2));
+
+  //-----------------------
+  return dist;
+}
 function create_matrix(m, n){
   //-----------------------
 
@@ -46,8 +64,9 @@ function get_mouse_pos(e, target){
 
   // pos is in pixel coordinates for the canvas.
   // so convert to WebGL clip space coordinates
-  info.mouse.x = pos.x / info.canvas.width  *  2 - 1;
-  info.mouse.y = pos.y / info.canvas.height * -2 + 1;
+  let value_1 = pos.x / info.canvas.width  *  2 - 1;
+  let value_2 = pos.y / info.canvas.height * -2 + 1;
+  info.mouse = ([value_1, value_2]);
 }
 function sort_by_indice(arr){
   var indices = new Array(arr.length);

@@ -2,15 +2,19 @@ function drawScene(){
   //-----------------------
 
   //Parameter
-  let nb_point = info.param.nb_point;
   gl = info.context;
 
   //Init
   compute_mvp();
-  create_line();
-  create_points(nb_point);
-  create_object(points);
-  create_object(lines);
+  init_line();
+  init_points(info.param.nb_point);
+
+  // Create buffers
+  [points_vbo_xy, points_vbo_rgb] = create_buffer();
+  [lines_vbo_xy, lines_vbo_rgb] = create_buffer();
+
+  create_object(points, points_vbo_xy, points_vbo_rgb);
+  create_object(lines, lines_vbo_xy, lines_vbo_rgb);
 
   //Shader
   gl.useProgram(info.program);
@@ -37,22 +41,20 @@ function drawScene(){
 function loop(){
   //-----------------------
 
-  
-
+  ui_update();
   move_points();
   move_line();
 
-  gl.uniform1i(info.uniform.is_point, 1);
-  update_object(points);
-  draw_object(points);
+  update_object(points, points_vbo_xy, points_vbo_rgb);
+  update_object(lines, lines_vbo_xy, lines_vbo_rgb);
 
+  gl.uniform1i(info.uniform.is_point, 1);
+  draw_object(points, points_vbo_xy, points_vbo_rgb);
   gl.uniform1i(info.uniform.is_point, 0);
-  update_object(lines);
-  draw_object(lines);
+  draw_object(lines, lines_vbo_xy, lines_vbo_rgb);
 
   //-----------------------
 }
-
 function compute_mvp(){
   gl = info.context;
   //-----------------------
@@ -76,17 +78,17 @@ function compute_mvp(){
 
   //-----------------------
 }
-function draw_object(data){
+function draw_object(data, vbo_xy, vbo_rgb){
   gl = info.context;
   //-----------------------
 
   //Location
-  gl.bindBuffer(gl.ARRAY_BUFFER, data.vbo_xy);
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbo_xy);
   gl.vertexAttribPointer(info.attribut.location, 2, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(info.attribut.location);
 
   //Color
-  gl.bindBuffer(gl.ARRAY_BUFFER, data.vbo_rgb);
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbo_rgb);
   gl.vertexAttribPointer(info.attribut.color, 4, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(info.attribut.color);
 
@@ -95,30 +97,64 @@ function draw_object(data){
 
   //-----------------------
 }
-function create_object(data){
+function create_object(data, vbo_xy, vbo_rgb){
   gl = info.context;
   //-----------------------
 
-  // Create a buffer for the square's positions.
-  data.vbo_xy = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, data.vbo_xy);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data.xy), gl.STREAM_DRAW);
+  //Serialization
+  let XY = [];
+  let RGB = [];
+  for(let i=0; i<data.xy.length; i++){
+    XY.push(data.xy[i][0]);
+    XY.push(data.xy[i][1]);
 
-  data.vbo_rgb = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, data.vbo_rgb);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data.rgb), gl.STREAM_DRAW);
+    RGB.push(data.rgb[i][0]);
+    RGB.push(data.rgb[i][1]);
+    RGB.push(data.rgb[i][2]);
+    RGB.push(data.rgb[i][3]);
+  }
+
+  //Add to GPU
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbo_xy);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(XY), gl.STREAM_DRAW);
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbo_rgb);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(RGB), gl.STREAM_DRAW);
 
   //-----------------------
 }
-function update_object(data){
+function update_object(data, vbo_xy, vbo_rgb){
   gl = info.context;
   //-----------------------
 
-  gl.bindBuffer(gl.ARRAY_BUFFER, data.vbo_xy);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data.xy), gl.STREAM_DRAW);
+  //Serialization
+  let XY = [];
+  let RGB = [];
+  for(let i=0; i<data.xy.length; i++){
+    XY.push(data.xy[i][0]);
+    XY.push(data.xy[i][1]);
 
-  gl.bindBuffer(gl.ARRAY_BUFFER, data.vbo_rgb);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data.rgb), gl.STREAM_DRAW);
+    RGB.push(data.rgb[i][0]);
+    RGB.push(data.rgb[i][1]);
+    RGB.push(data.rgb[i][2]);
+    RGB.push(data.rgb[i][3]);
+  }
+
+  //GPU update
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbo_xy);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(XY), gl.STREAM_DRAW);
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbo_rgb);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(RGB), gl.STREAM_DRAW);
 
   //-----------------------
+}
+function create_buffer(){
+  //-----------------------
+
+  vbo_xy = gl.createBuffer();
+  vbo_rgb = gl.createBuffer();
+
+  //-----------------------
+  return [vbo_xy, vbo_rgb]
 }
