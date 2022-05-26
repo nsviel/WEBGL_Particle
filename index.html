@@ -18,40 +18,33 @@
 
   <body>
 
-    <div id="entro_title">
-      <img src="image/logo.png" ID="logo">
-      <h1>Enthropium</h1>
-      <h4>Working-in-progress 3rd millenium physically-based society.</h4>
-      <p>Entropy [en-truh-pee]: a state of disorder, or a tendency toward such a state; chaos.</p>
-      <p>Anthro- [an-throh]: human being.</p>
-    <div>
 
 
     <div id="webgl_header">
-      <div>
-        <!-- Slider nb points -->
-        <input type="range" id="slider_points" min="0" max="200" step="1">
-        <input type="text"  id="cpt_points" >
-        <span> Number of points </span>
-      </div>
-      <div>
-        <!-- Slider nb links -->
-        <input type="range" id="slider_links" min="0" max="20" step="1">
-        <input type="text"  id="cpt_links" >
-        <span> Number of links </span>
-      </div>
+      <table>
+        <tr>
+          <!-- Slider nb points -->
+          <td>  <input type="range" id="slider_points" min="0" max="200" step="1"> </td>
+          <td>  <input type="text"  id="cpt_points"> </td>
+          <td>  <span> Number of points </span> </td>
+        </tr>
+        <tr>
+          <!-- Slider nb links -->
+          <td>  <input type="range" id="slider_links" min="0" max="20" step="1"> </td>
+          <td>  <input type="text"  id="cpt_links"> </td>
+          <td>  <span> Number of links </span> </td>
+        </tr>
+        <tr>
+          <!-- Slider nb links -->
+          <td>  <input type="range" id="slider_speed" min="0" max="0.1" step="0.0001"> </td>
+          <td>  <input type="text"  id="cpt_speed"> </td>
+          <td>  <span> Speed </span> </td>
+        </tr>
+      </table>
 
       <!-- Webgl canvas -->
-      <canvas id="glcanvas" width="1000" height="500"></canvas>
+      <canvas id="glcanvas"></canvas>
     </div>
-
-    <!-- Declaration -->
-    <p> Innovation comes from an latin origin innovatio which means "add something to the contract to continu and maintain its state".
-    This word is nowaday user everywhere for everything.
-    In order to keep
-    The current contract
-    on.
-    We need no innovation at all, we need an entire new contract.</p>
 
 
   </body>

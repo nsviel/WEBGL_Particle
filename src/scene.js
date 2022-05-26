@@ -45,13 +45,16 @@ function loop(){
   move_points();
   move_line();
 
-  update_object(points, points_vbo_xy, points_vbo_rgb);
-  update_object(lines, lines_vbo_xy, lines_vbo_rgb);
-
   gl.uniform1i(info.uniform.is_point, 1);
+  update_object(points, points_vbo_xy, points_vbo_rgb);
   draw_object(points, points_vbo_xy, points_vbo_rgb);
+
   gl.uniform1i(info.uniform.is_point, 0);
+  update_object(lines, lines_vbo_xy, lines_vbo_rgb);
   draw_object(lines, lines_vbo_xy, lines_vbo_rgb);
+
+
+  compute_stats()
 
   //-----------------------
 }
@@ -65,7 +68,7 @@ function compute_mvp(){
   const zNear = 0.1;
   const zFar = 100.0;
   const proj_mat = glMatrix.mat4.create();
-  glMatrix.mat4.perspective(proj_mat, fieldOfView, aspect, zNear, zFar);
+  //lMatrix.mat4.perspective(proj_mat, fieldOfView, aspect, zNear, zFar);
   glMatrix.mat4.ortho(proj_mat, -1.0, 1.0, -1.0, 1.0, zNear, zFar);
 
   // Model view matrix
@@ -93,7 +96,7 @@ function draw_object(data, vbo_xy, vbo_rgb){
   gl.enableVertexAttribArray(info.attribut.color);
 
   //Draw
-  gl.drawArrays(data.draw, 0, data.size);
+  gl.drawArrays(data.draw, 0, data.nb_point);
 
   //-----------------------
 }
@@ -157,4 +160,18 @@ function create_buffer(){
 
   //-----------------------
   return [vbo_xy, vbo_rgb]
+}
+function compute_stats(){
+  //PV = NkbT
+  // T = PV / Nkb
+  //kb = 1,38 × 10-23
+  //N = nombre de particules
+  //P = pression
+  // V = volume en mètre cube
+
+  let P = 1;
+  let V = 1*Math.pow(10,-20)
+  let N = points.nb_point
+  let kb = 1.38*Math.pow(10,-23)
+  let T = (P * V) / (N * kb)
 }

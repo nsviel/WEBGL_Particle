@@ -7,6 +7,7 @@ var info = {
     nb_point: 0,
     primitiv_rgb: 0,
     primitiv_alpha: 0,
+    speed: 0,
   },
   mouse: 0,
   attribut: {
@@ -33,12 +34,13 @@ var points = {
   nxy: 0,
   size: 0,
   draw: 0,
+  nb_point: 0,
 };
 
 var lines_vbo_xy, lines_vbo_rgb
 var lines = {
   xy: 0,
   rgb: 0,
-  size:0,
+  nb_point:0,
   draw: 0,
 };

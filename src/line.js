@@ -11,10 +11,14 @@ function move_line(){
   let rgb_alpha = info.param.primitiv_alpha;
   let rgb = info.param.primitiv_rgb;
   let nb_link = info.param.nb_link;
+  let dist_max = 0.8 - points.xy.length/100;
 
   //Check if there is enough point for the number of link
-  if(nb_link >= points.size - 1){
-    nb_link = points.size - 1;
+  if(nb_link >= points.nb_point - 1){
+    nb_link = points.nb_point - 1;
+  }
+  if(dist_max <= 0.2){
+    dist_max = 0.2
   }
 
   let XY = [];
@@ -24,27 +28,30 @@ function move_line(){
 
     //Create line
     for(let j=0; j<nb_link; j++){
-      XY.push(points.xy[i]);
-      XY.push(points.xy[dist_vec[j][1]]);
+      let dist = dist_vec[j][0];
+      let alpha = 1 - dist / (dist_max);
 
-      RGB.push([rgb, rgb, rgb, rgb_alpha])
-      RGB.push([rgb, rgb, rgb, rgb_alpha])
+
+      if(dist < dist_max){
+        XY.push(points.xy[i]);
+        XY.push(points.xy[dist_vec[j][1]]);
+
+        RGB.push([rgb, rgb, rgb, alpha])
+        RGB.push([rgb, rgb, rgb, alpha])
+      }
     }
-
   }
 
   lines.xy = XY;
   lines.rgb = RGB;
-  lines.size = lines.xy.length;
+  lines.nb_point = lines.xy.length;
 
   //-----------------------
 }
 function knn(i){
   //-----------------------
 
-  let collid_thres = 0.01;
   let dist_vec = new Array();
-
   for(let j=0; j<points.xy.length; j++){
     if(i != j){
       let dist = fct_distance(points.xy[i], points.xy[j])
@@ -53,13 +60,7 @@ function knn(i){
       dist_vec.push([dist, j]);
 
       //Collision
-      if(dist < collid_thres){
-        points.nxy[i][0] = -points.nxy[i][0];
-        points.nxy[i][1] = -points.nxy[i][1];
-
-        points.nxy[j][0] = -points.nxy[j][0];
-        points.nxy[j][1] = -points.nxy[j][1];
-      }
+      collision(dist, i);
     }
   }
 
@@ -67,4 +68,25 @@ function knn(i){
 
   //-----------------------
   return dist_vec
+}
+function collision(dist, i){
+  let collid_thres = 0.01;
+  //-----------------------
+
+  if(dist < collid_thres){
+    let Nx = getRandomArbitrary(-1, 1);
+    let Ny = getRandomArbitrary(-1, 1);
+    points.nxy[i] = [Nx, Ny];
+    points.rgb[i] = [0, 0, 1, 1];
+
+    if(points.nb_point < 200){
+    //  add_points_xy(points.xy[i]);
+    }
+  }
+
+  if(points.rgb[i][2] != 0){
+    points.rgb[i][2] -= 0.00025;
+  }
+
+  //-----------------------
 }
