@@ -16,6 +16,7 @@ var info = {
   },
   uniform: {
     in_mvp: 0,
+    point_size: 5,
     is_point: false,
   },
   limit: 0,
@@ -25,6 +26,13 @@ var mvp = {
   projection: 0,
   modelview: 0,
   mvp: 0,
+};
+
+var vbo = {
+  pt_xy: 0,
+  pt_rgb: 0,
+  li_xy: 0,
+  li_rgb: 0,
 };
 
 var points_vbo_xy, points_vbo_rgb

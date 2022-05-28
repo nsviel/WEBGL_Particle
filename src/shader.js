@@ -1,5 +1,4 @@
 
-
 function shadering() {
   gl = info.context
   //-----------------------
@@ -14,6 +13,7 @@ function shadering() {
   info.attribut.color = gl.getAttribLocation(program, 'in_color');
   info.uniform.in_mvp = gl.getUniformLocation(program, 'in_mvp');
   info.uniform.is_point = gl.getUniformLocation(program, 'is_point');
+  info.uniform.point_size = gl.getUniformLocation(program, 'point_size');
 
   //-----------------------
 }
@@ -23,13 +23,15 @@ function create_shader(){
   // Vertex shader program
   const shader_vertex =
   `#version 300 es
+
   in vec4 in_position;
   in vec4 in_color;
   out vec4 frag_color;
+  uniform float point_size;
 
   void main(){
     gl_Position = in_position;
-    gl_PointSize = 5.0;
+    gl_PointSize = point_size;
 
     frag_color = in_color;
   }

@@ -35,14 +35,15 @@ function create_context(){
   info.param.primitiv_rgb = 0;
   info.param.primitiv_alpha = 0.5;
   info.param.speed = 0.001;
+  info.param.point_size = 5;
 
   //HTML links
   canvas.addEventListener("mousemove", event => get_mouse_pos(event, canvas));
   document.getElementById("cpt_points").value = info.param.nb_point;
   document.getElementById("slider_points").value = info.param.nb_point;
 
-  document.getElementById("cpt_links").value = info.param.nb_link;
-  document.getElementById("slider_links").value = info.param.nb_link;
+  document.getElementById("cpt_size").value = info.param.point_size;
+  document.getElementById("slider_size").value = info.param.point_size;
 
   document.getElementById("cpt_speed").value = info.param.speed;
   document.getElementById("slider_speed").value = info.param.speed;

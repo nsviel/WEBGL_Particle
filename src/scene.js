@@ -6,8 +6,8 @@ function drawScene(){
 
   //Init
   compute_mvp();
-  init_line();
   init_points(info.param.nb_point);
+  init_line();
 
   // Create buffers
   [points_vbo_xy, points_vbo_rgb] = create_buffer();
@@ -19,6 +19,7 @@ function drawScene(){
   //Shader
   gl.useProgram(info.program);
   gl.uniformMatrix4fv(info.uniform.in_mvp, false, mvp.mvp);
+  gl.uniform1f(info.uniform.point_size, info.param.point_size);
 
   //main loop
   function render() {
@@ -26,14 +27,10 @@ function drawScene(){
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    var startTime = performance.now()
     loop();
-    var endTime = performance.now()
-    //console.log(`Loop duration: ${endTime - startTime} milliseconds`)
 
     requestAnimationFrame(render);
   }
-
   requestAnimationFrame(render);
 
   //-----------------------
@@ -43,11 +40,12 @@ function loop(){
 
   ui_update();
   move_points();
-  move_line();
+  move_line_all();
 
   gl.uniform1i(info.uniform.is_point, 1);
   update_object(points, points_vbo_xy, points_vbo_rgb);
   draw_object(points, points_vbo_xy, points_vbo_rgb);
+
 
   gl.uniform1i(info.uniform.is_point, 0);
   update_object(lines, lines_vbo_xy, lines_vbo_rgb);
