@@ -36,6 +36,7 @@ function create_context(){
   info.param.primitiv_alpha = 0.5;
   info.param.speed = 0.001;
   info.param.point_size = 5;
+  info.param.line_dist_max = 0.5;
 
   //HTML links
   canvas.addEventListener("mousemove", event => get_mouse_pos(event, canvas));
@@ -47,6 +48,9 @@ function create_context(){
 
   document.getElementById("cpt_speed").value = info.param.speed;
   document.getElementById("slider_speed").value = info.param.speed;
+
+  document.getElementById("cpt_line_dist_max").value = info.param.line_dist_max;
+  document.getElementById("slider_line_dist_max").value = info.param.line_dist_max;
 
   //-----------------------
 }

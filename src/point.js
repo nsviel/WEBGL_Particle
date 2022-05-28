@@ -61,7 +61,7 @@ function add_points(nb_point){
 }
 function add_points_xy(xy){
   //-----------------------
-say("hello");
+
   [XY, RGB, Nxy] = create_points(1);
   XY[0][0] += xy[0] + Nxy[0][0] * 0.001;
   XY[0][1] += xy[1] + Nxy[0][1] * 0.001;

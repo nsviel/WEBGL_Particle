@@ -12,14 +12,19 @@
   <body>
 
 
-
     <div id="webgl_header">
       <table>
         <tr>
           <!-- Slider nb points -->
-          <td>  <input type="range" id="slider_points" min="0" max="200" step="1"> </td>
+          <td>  <input type="range" id="slider_points" min="0" max="500" step="1"> </td>
           <td>  <input type="text"  id="cpt_points"> </td>
           <td>  <span> Number of points </span> </td>
+
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+          <td>  <input type="range" id="slider_line_dist_max" min="0" max="1" step="0.01"> </td>
+          <td>  <input type="text"  id="cpt_line_dist_max"> </td>
+          <td>  <span> Line dist max </span> </td>
         </tr>
         <tr>
           <!-- Slider nb links -->

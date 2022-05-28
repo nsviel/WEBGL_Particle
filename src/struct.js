@@ -8,6 +8,7 @@ var info = {
     primitiv_rgb: 0,
     primitiv_alpha: 0,
     speed: 0,
+    line_dist_max: 0,
   },
   mouse: 0,
   attribut: {

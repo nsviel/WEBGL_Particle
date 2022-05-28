@@ -74,7 +74,7 @@ function move_line_all(){
 function create_line_all(XY, RGB, dist_vec, i){
   let rgb_alpha = info.param.primitiv_alpha;
   let rgb = info.param.primitiv_rgb;
-  let dist_max = 0.5;
+  let dist_max = info.param.line_dist_max;
   //-----------------------
 
   for(let j=0; j<dist_vec.length; j++){
