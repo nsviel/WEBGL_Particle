@@ -1,3 +1,4 @@
+//All webgl program info
 var info = {
   webgl:{
     canvas: 0,
@@ -33,6 +34,8 @@ var info = {
     mouse: 0,
   },
 };
+
+//All scene objects info
 var object = {
   point = {
     xy: 0,
@@ -41,20 +44,15 @@ var object = {
     size: 0,
     draw: 0,
     nb_point: 0,
+    vbo_xy: 0,
+    vbo_rgb: 0,
   },
   line = {
     xy: 0,
     rgb: 0,
     nb_point:0,
     draw: 0,
+    vbo_xy: 0,
+    vbo_rgb: 0,
   },
 }
-
-var vbo = {
-  pt_xy: 0,
-  pt_rgb: 0,
-  li_xy: 0,
-  li_rgb: 0,
-};
-var points_vbo_xy, points_vbo_rgb
-var lines_vbo_xy, lines_vbo_rgb

@@ -64,11 +64,12 @@ function init_object(){
   init_line();
 
   //Create object buffers
-  [points_vbo_xy, points_vbo_rgb] = create_buffer();
-  [lines_vbo_xy, lines_vbo_rgb] = create_buffer();
+  create_buffer(object.point);
+  create_buffer(object.line);
 
-  create_object(object.point, points_vbo_xy, points_vbo_rgb);
-  create_object(object.line, lines_vbo_xy, lines_vbo_rgb);
+  //Create scene object
+  create_object(object.point);
+  create_object(object.line);
 
   //-----------------------
 }
@@ -92,8 +93,8 @@ function draw_point(){
   //-----------------------
 
   gl.uniform1i(info.shader.uniform.is_point, 1);
-  update_object(object.point, points_vbo_xy, points_vbo_rgb);
-  draw_object(object.point, points_vbo_xy, points_vbo_rgb);
+  update_object(object.point);
+  draw_object(object.point);
 
   //-----------------------
 }
@@ -102,8 +103,8 @@ function draw_line(){
 
   //Draw object.line
   gl.uniform1i(info.shader.uniform.is_point, 0);
-  update_object(object.line, lines_vbo_xy, lines_vbo_rgb);
-  draw_object(object.line, lines_vbo_xy, lines_vbo_rgb);
+  update_object(object.line);
+  draw_object(object.line);
 
   //-----------------------
 }

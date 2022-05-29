@@ -63,8 +63,10 @@ function get_webgl_info(){
 }
 
 //Object functions
-function draw_object(data, vbo_xy, vbo_rgb){
+function draw_object(data){
   gl = info.webgl.context;
+  vbo_xy = data.vbo_xy;
+  vbo_rgb = data.vbo_rgb;
   //-----------------------
 
   //Location
@@ -82,8 +84,10 @@ function draw_object(data, vbo_xy, vbo_rgb){
 
   //-----------------------
 }
-function create_object(data, vbo_xy, vbo_rgb){
+function create_object(data){
   gl = info.webgl.context;
+  vbo_xy = data.vbo_xy;
+  vbo_rgb = data.vbo_rgb;
   //-----------------------
 
   //Serialization
@@ -108,8 +112,10 @@ function create_object(data, vbo_xy, vbo_rgb){
 
   //-----------------------
 }
-function update_object(data, vbo_xy, vbo_rgb){
+function update_object(data){
   gl = info.webgl.context;
+  vbo_xy = data.vbo_xy;
+  vbo_rgb = data.vbo_rgb;
   //-----------------------
 
   //Serialization
@@ -134,12 +140,11 @@ function update_object(data, vbo_xy, vbo_rgb){
 
   //-----------------------
 }
-function create_buffer(){
+function create_buffer(data){
   //-----------------------
 
-  vbo_xy = gl.createBuffer();
-  vbo_rgb = gl.createBuffer();
+  data.vbo_xy = gl.createBuffer();
+  data.vbo_rgb = gl.createBuffer();
 
   //-----------------------
-  return [vbo_xy, vbo_rgb]
 }
