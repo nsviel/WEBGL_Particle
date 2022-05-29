@@ -41,7 +41,7 @@ function runtime_ui(){
   }
   if(point_size != info.param.point_size){
     info.param.point_size = point_size;
-    gl.uniform1f(info.uniform.point_size, point_size);
+    gl.uniform1f(info.shader.uniform.point_size, point_size);
   }
 
   //-----------------------

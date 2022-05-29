@@ -8,7 +8,7 @@ function compute_stats(){
 
   let P = 1;
   let V = 1*Math.pow(10,-20)
-  let N = points.nb_point
+  let N = object.points.nb_point
   let kb = 1.38*Math.pow(10,-23)
   let T = (P * V) / (N * kb)
 }

@@ -2,23 +2,23 @@
 function init_line(){
   //-----------------------
 
-  lines.draw = gl.LINES;
+  object.line.draw = gl.LINES;
 
   //-----------------------
 }
 
-//Make lines with all points
+//Make lines with all object.point
 function runtime_line_all(){
   //-----------------------
 
   //kNN point lines
   let XY = [];
   let RGB = [];
-  for(let i=0; i<points.xy.length; i++){
+  for(let i=0; i<object.point.xy.length; i++){
     //Compute all distances
     let dist_vec = new Array();
-    for(let j=i+1; j<points.xy.length; j++){
-      let dist = fct_distance(points.xy[i], points.xy[j])
+    for(let j=i+1; j<object.point.xy.length; j++){
+      let dist = fct_distance(object.point.xy[i], object.point.xy[j])
       collision(dist, i);
       collision(dist, j);
       dist_vec.push([dist, j]);
@@ -29,23 +29,23 @@ function runtime_line_all(){
   }
 
   //Mouse centered lines
-  for(let i=0; i<points.xy.length; i++){
-    dist = fct_distance(points.xy[i], info.mouse)
+  for(let i=0; i<object.point.xy.length; i++){
+    dist = fct_distance(object.point.xy[i], info.value.mouse)
     let alpha = - Math.log( dist / (0.2));
 
     //If inside mouse circle
     if(dist < 0.2 && alpha > 0.1){
-      XY.push(info.mouse)
-      XY.push(points.xy[i])
+      XY.push(info.value.mouse)
+      XY.push(object.point.xy[i])
 
       RGB.push([0,0,1,alpha])
       RGB.push([0,0,1,alpha])
     }
   }
 
-  lines.xy = XY;
-  lines.rgb = RGB;
-  lines.nb_point = lines.xy.length;
+  object.line.xy = XY;
+  object.line.rgb = RGB;
+  object.line.nb_point = object.line.xy.length;
 
   //-----------------------
 }
@@ -61,8 +61,8 @@ function create_line_all(XY, RGB, dist_vec, i){
     let alpha = - Math.log( dist / (dist_max)) - 0.5;
 
     if(alpha > 0 && dist < dist_max){
-      XY.push(points.xy[i]);
-      XY.push(points.xy[dist_vec[j][1]]);
+      XY.push(object.point.xy[i]);
+      XY.push(object.point.xy[dist_vec[j][1]]);
 
       RGB.push([rgb, rgb, rgb, alpha])
       RGB.push([rgb, rgb, rgb, alpha])
@@ -78,14 +78,14 @@ function runtime_line_knn(){
 
   let XY = [];
   let RGB = [];
-  for(let i=0; i<points.xy.length; i++){
+  for(let i=0; i<object.point.xy.length; i++){
     let dist_vec = knn(i);
     create_line_knn(XY, RGB, dist_vec, i);
   }
 
-  lines.xy = XY;
-  lines.rgb = RGB;
-  lines.nb_point = lines.xy.length;
+  object.line.xy = XY;
+  object.line.rgb = RGB;
+  object.line.nb_point = object.line.xy.length;
 
   //-----------------------
 }
@@ -103,8 +103,8 @@ function create_line_knn(XY, RGB, dist_vec, i){
       let alpha = - Math.log( dist / (dist_max)) - 0.5;
 
       if(alpha > 0){
-        XY.push(points.xy[i]);
-        XY.push(points.xy[dist_vec[j][1]]);
+        XY.push(object.point.xy[i]);
+        XY.push(object.point.xy[dist_vec[j][1]]);
 
         RGB.push([rgb, rgb, rgb, alpha])
         RGB.push([rgb, rgb, rgb, alpha])
@@ -118,9 +118,9 @@ function knn(i){
   //-----------------------
 
   let dist_vec = new Array();
-  for(let j=0; j<points.xy.length; j++){
+  for(let j=0; j<object.point.xy.length; j++){
     if(i != j){
-      let dist = fct_distance(points.xy[i], points.xy[j])
+      let dist = fct_distance(object.point.xy[i], object.point.xy[j])
 
       //Line link
       dist_vec.push([dist, j]);
@@ -130,7 +130,7 @@ function knn(i){
     }
   }
 
-  //add_points_xy(points.xy[i]);
+  //add_points_xy(object.point.xy[i]);
   dist_vec.sort();
 
   //-----------------------

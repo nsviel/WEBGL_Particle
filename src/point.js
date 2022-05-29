@@ -5,30 +5,30 @@ function init_points(nb_point){
   [XY, RGB, Nxy] = create_points(nb_point);
 
   //Store data
-  points.xy = XY;
-  points.rgb = RGB;
-  points.nxy = Nxy;
-  points.nb_point = nb_point;
-  points.size = 1;
-  points.draw = gl.POINTS;
+  object.point.xy = XY;
+  object.point.rgb = RGB;
+  object.point.nxy = Nxy;
+  object.point.nb_point = nb_point;
+  object.point.size = 1;
+  object.point.draw = gl.POINTS;
 
   //-----------------------
 }
 function runtime_point(){
   //-----------------------
 
-  for(let i=0; i<points.xy.length; i++){
-    dist = fct_distance(points.xy[i], info.mouse)
+  for(let i=0; i<object.point.xy.length; i++){
+    dist = fct_distance(object.point.xy[i], info.value.mouse)
 
     //If inside mouse circle
     if(dist < 0.2){
-      points.xy[i][0] += (0.2 - dist) * (points.xy[i][0] - info.mouse[0]) * 0.2 + points.nxy[i][0] * 0.001;
-      points.xy[i][1] += (0.2 - dist) * (points.xy[i][1] - info.mouse[1]) * 0.2 + points.nxy[i][1] * 0.001;
+      object.point.xy[i][0] += (0.2 - dist) * (object.point.xy[i][0] - info.value.mouse[0]) * 0.2 + object.point.nxy[i][0] * 0.001;
+      object.point.xy[i][1] += (0.2 - dist) * (object.point.xy[i][1] - info.value.mouse[1]) * 0.2 + object.point.nxy[i][1] * 0.001;
     }
     //Default displacment
     else{
-      points.xy[i][0] += points.nxy[i][0] * info.param.speed;
-      points.xy[i][1] += points.nxy[i][1] * info.param.speed;
+      object.point.xy[i][0] += object.point.nxy[i][0] * info.param.speed;
+      object.point.xy[i][1] += object.point.nxy[i][1] * info.param.speed;
     }
 
     check_areas_limit(i);
@@ -36,19 +36,43 @@ function runtime_point(){
 
   //-----------------------
 }
+function collision(dist, i){
+  let collid_thres = 0.01;
+  var cpt_collision = 0;
+  //-----------------------
 
-//Creation / Deletion of points
+  //Collision action
+  if(dist < collid_thres){
+    let Nx = getRandomArbitrary(-1, 1);
+    let Ny = getRandomArbitrary(-1, 1);
+    object.point.nxy[i] = [Nx, Ny];
+    object.point.rgb[i] = [1, 0, 0, 1];
+
+    if(object.point.nb_point < 200){
+      cpt_collision++;
+    }
+  }
+
+  //Decreasing colorization
+  if(object.point.rgb[i][0] != 0){
+    object.point.rgb[i][0] -= 0.00025;
+  }
+
+  //-----------------------
+}
+
+//Creation / Deletion of object.point
 function add_points(nb_point){
   //-----------------------
 
   [XY, RGB, Nxy] = create_points(nb_point);
 
   //Store data
-  points.xy = points.xy.concat(XY);
-  points.rgb = points.rgb.concat(RGB);
-  points.nxy = points.nxy.concat(Nxy);
-  points.nb_point = points.xy.length;
-  points.draw = gl.POINTS;
+  object.point.xy = object.point.xy.concat(XY);
+  object.point.rgb = object.point.rgb.concat(RGB);
+  object.point.nxy = object.point.nxy.concat(Nxy);
+  object.point.nb_point = object.point.xy.length;
+  object.point.draw = gl.POINTS;
 
   //-----------------------
 }
@@ -61,19 +85,19 @@ function add_points_xy(xy){
   RGB[0] = [0,0,1,1];
 
   //Store data
-  points.xy = points.xy.concat(XY);
-  points.rgb = points.rgb.concat(RGB);
-  points.nxy = points.nxy.concat(Nxy);
-  points.nb_point = points.xy.length;
-  points.draw = gl.POINTS;
+  object.point.xy = object.point.xy.concat(XY);
+  object.point.rgb = object.point.rgb.concat(RGB);
+  object.point.nxy = object.point.nxy.concat(Nxy);
+  object.point.nb_point = object.point.xy.length;
+  object.point.draw = gl.POINTS;
 
   //-----------------------
 }
 function create_points(nb_point){
   //-----------------------
 
-  let lim_x = info.limit[0];
-  let lim_y = info.limit[1];
+  let lim_x = info.param.limit[0];
+  let lim_y = info.param.limit[1];
   let rgb = info.param.primitiv_rgb;
 
   //Location
@@ -106,12 +130,12 @@ function remove_point(nb_point){
 
   //Location
   for(let i=0; i<nb_point; i++){
-    points.xy.pop();
-    points.nxy.pop();
-    points.rgb.pop();
+    object.point.xy.pop();
+    object.point.nxy.pop();
+    object.point.rgb.pop();
   }
 
-  points.nb_point = points.xy.length;
+  object.point.nb_point = object.point.xy.length;
 
   //-----------------------
 }
@@ -121,7 +145,7 @@ function check_point_quantity(){
   //-----------------------
 
   let nb_slider = info.param.nb_point;
-  let diff = points.nb_point - nb_slider;
+  let diff = object.point.nb_point - nb_slider;
 
   if(diff > 0){
     remove_point(diff);
@@ -135,21 +159,21 @@ function check_areas_limit(i){
   //-----------------------
 
   //Area borders
-  if(points.xy[i][0] < -info.limit[0]){
-    points.xy[i][0] = -info.limit[0];
-    points.nxy[i][0] = -points.nxy[i][0];
+  if(object.point.xy[i][0] < -info.param.limit[0]){
+    object.point.xy[i][0] = -info.param.limit[0];
+    object.point.nxy[i][0] = -object.point.nxy[i][0];
   }
-  if(points.xy[i][0] > info.limit[0]){
-    points.xy[i][0] = info.limit[0];
-    points.nxy[i][0] = -points.nxy[i][0];
+  if(object.point.xy[i][0] > info.param.limit[0]){
+    object.point.xy[i][0] = info.param.limit[0];
+    object.point.nxy[i][0] = -object.point.nxy[i][0];
   }
-  if(points.xy[i][1] < -info.limit[1]){
-    points.xy[i][1] = -info.limit[1];
-    points.nxy[i][1] = -points.nxy[i][1];
+  if(object.point.xy[i][1] < -info.param.limit[1]){
+    object.point.xy[i][1] = -info.param.limit[1];
+    object.point.nxy[i][1] = -object.point.nxy[i][1];
   }
-  if(points.xy[i][1] > info.limit[1]){
-    points.xy[i][1] = info.limit[1];
-    points.nxy[i][1] = -points.nxy[i][1];
+  if(object.point.xy[i][1] > info.param.limit[1]){
+    object.point.xy[i][1] = info.param.limit[1];
+    object.point.nxy[i][1] = -object.point.nxy[i][1];
   }
 
   //-----------------------

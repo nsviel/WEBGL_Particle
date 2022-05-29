@@ -64,9 +64,9 @@ function get_mouse_pos(e, target){
 
   // pos is in pixel coordinates for the canvas.
   // so convert to WebGL clip space coordinates
-  let value_1 = pos.x / info.canvas.width  *  2 - 1;
-  let value_2 = pos.y / info.canvas.height * -2 + 1;
-  info.mouse = ([value_1, value_2]);
+  let value_1 = pos.x / info.webgl.canvas.width  *  2 - 1;
+  let value_2 = pos.y / info.webgl.canvas.height * -2 + 1;
+  info.value.mouse = ([value_1, value_2]);
 }
 function sort_by_indice(arr){
   var indices = new Array(arr.length);

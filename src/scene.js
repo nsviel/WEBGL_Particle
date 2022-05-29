@@ -1,6 +1,6 @@
 //Main functions
 function loop(){
-  gl = info.context;
+  gl = info.webgl.context;
   //-----------------------
 
   //Init
@@ -31,15 +31,9 @@ function draw_scene(){
   runtime_point();
   runtime_line_all();
 
-  //Draw points
-  gl.uniform1i(info.uniform.is_point, 1);
-  update_object(points, points_vbo_xy, points_vbo_rgb);
-  draw_object(points, points_vbo_xy, points_vbo_rgb);
-
-  //Draw lines
-  gl.uniform1i(info.uniform.is_point, 0);
-  update_object(lines, lines_vbo_xy, lines_vbo_rgb);
-  draw_object(lines, lines_vbo_xy, lines_vbo_rgb);
+  //Draw objects
+  draw_point();
+  draw_line();
 
   //-----------------------
 }
@@ -48,7 +42,7 @@ function draw_scene(){
 function init_parameter(){
   //-----------------------
 
-  info.limit = [0.8, 0.8];
+  info.param.limit = [0.8, 0.8];
   info.param.nb_point = 50;
   info.param.bkg = 1;
   info.param.nb_point = 50;
@@ -73,22 +67,43 @@ function init_object(){
   [points_vbo_xy, points_vbo_rgb] = create_buffer();
   [lines_vbo_xy, lines_vbo_rgb] = create_buffer();
 
-  create_object(points, points_vbo_xy, points_vbo_rgb);
-  create_object(lines, lines_vbo_xy, lines_vbo_rgb);
+  create_object(object.point, points_vbo_xy, points_vbo_rgb);
+  create_object(object.line, lines_vbo_xy, lines_vbo_rgb);
 
   //-----------------------
 }
 function init_scene(){
-  gl = info.context;
+  gl = info.webgl.context;
   //-----------------------
 
   //Compute MVP
   compute_mvp();
 
   //Shader
-  gl.useProgram(info.program);
-  gl.uniformMatrix4fv(info.uniform.in_mvp, false, mvp.mvp);
-  gl.uniform1f(info.uniform.point_size, info.param.point_size);
+  gl.useProgram(info.shader.program);
+  gl.uniformMatrix4fv(info.shader.uniform.in_mvp, false, info.webgl.mvp.mvp);
+  gl.uniform1f(info.shader.uniform.point_size, info.param.point_size);
+
+  //-----------------------
+}
+
+//Draw functions
+function draw_point(){
+  //-----------------------
+
+  gl.uniform1i(info.shader.uniform.is_point, 1);
+  update_object(object.point, points_vbo_xy, points_vbo_rgb);
+  draw_object(object.point, points_vbo_xy, points_vbo_rgb);
+
+  //-----------------------
+}
+function draw_line(){
+  //-----------------------
+
+  //Draw object.line
+  gl.uniform1i(info.shader.uniform.is_point, 0);
+  update_object(object.line, lines_vbo_xy, lines_vbo_rgb);
+  draw_object(object.line, lines_vbo_xy, lines_vbo_rgb);
 
   //-----------------------
 }

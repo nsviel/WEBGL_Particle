@@ -12,7 +12,7 @@ function init_shader(){
 
 //Subfunctions
 function init_program(vs, fs) {
-  gl = info.context
+  gl = info.webgl.context
   //-----------------------
 
   const vertexShader = load_shader(gl, gl.VERTEX_SHADER, vs);
@@ -31,19 +31,19 @@ function init_program(vs, fs) {
   }
 
   //-----------------------
-  info.program = program;
+  info.shader.program = program;
 }
 function init_params(){
-  gl = info.context
-  program = info.program;
+  gl = info.webgl.context
+  program = info.shader.program;
   //-----------------------
 
   //Stock info
-  info.attribut.location = gl.getAttribLocation(program, 'in_position');
-  info.attribut.color = gl.getAttribLocation(program, 'in_color');
-  info.uniform.in_mvp = gl.getUniformLocation(program, 'in_mvp');
-  info.uniform.is_point = gl.getUniformLocation(program, 'is_point');
-  info.uniform.point_size = gl.getUniformLocation(program, 'point_size');
+  info.shader.attribut.location = gl.getAttribLocation(program, 'in_position');
+  info.shader.attribut.color = gl.getAttribLocation(program, 'in_color');
+  info.shader.uniform.in_mvp = gl.getUniformLocation(program, 'in_mvp');
+  info.shader.uniform.is_point = gl.getUniformLocation(program, 'is_point');
+  info.shader.uniform.point_size = gl.getUniformLocation(program, 'point_size');
 
   //-----------------------
 }

@@ -3,7 +3,7 @@ function init_wgl_context(){
   //-----------------------
 
   init_context();
-  init_resize_canvas(info.canvas)
+  init_resize_canvas(info.webgl.canvas)
   init_viewport();
 
   //-----------------------
@@ -21,15 +21,15 @@ function init_context(){
     return;
   }
 
-  info.context = gl;
-  info.canvas = canvas;
+  info.webgl.context = gl;
+  info.webgl.canvas = canvas;
 
   canvas.addEventListener("mousemove", event => get_mouse_pos(event, canvas));
 
   //-----------------------
 }
 function init_viewport(){
-  gl = info.context;
+  gl = info.webgl.context;
   //-----------------------
 
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -64,18 +64,18 @@ function get_webgl_info(){
 
 //Object functions
 function draw_object(data, vbo_xy, vbo_rgb){
-  gl = info.context;
+  gl = info.webgl.context;
   //-----------------------
 
   //Location
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo_xy);
-  gl.vertexAttribPointer(info.attribut.location, 2, gl.FLOAT, false, 0, 0);
-  gl.enableVertexAttribArray(info.attribut.location);
+  gl.vertexAttribPointer(info.shader.attribut.location, 2, gl.FLOAT, false, 0, 0);
+  gl.enableVertexAttribArray(info.shader.attribut.location);
 
   //Color
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo_rgb);
-  gl.vertexAttribPointer(info.attribut.color, 4, gl.FLOAT, false, 0, 0);
-  gl.enableVertexAttribArray(info.attribut.color);
+  gl.vertexAttribPointer(info.shader.attribut.color, 4, gl.FLOAT, false, 0, 0);
+  gl.enableVertexAttribArray(info.shader.attribut.color);
 
   //Draw
   gl.drawArrays(data.draw, 0, data.nb_point);
@@ -83,7 +83,7 @@ function draw_object(data, vbo_xy, vbo_rgb){
   //-----------------------
 }
 function create_object(data, vbo_xy, vbo_rgb){
-  gl = info.context;
+  gl = info.webgl.context;
   //-----------------------
 
   //Serialization
@@ -109,7 +109,7 @@ function create_object(data, vbo_xy, vbo_rgb){
   //-----------------------
 }
 function update_object(data, vbo_xy, vbo_rgb){
-  gl = info.context;
+  gl = info.webgl.context;
   //-----------------------
 
   //Serialization

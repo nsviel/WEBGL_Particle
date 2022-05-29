@@ -1,5 +1,5 @@
 function compute_mvp(){
-  gl = info.context;
+  gl = info.webgl.context;
   //-----------------------
 
   // Create a perspective matrix, a special matrix that is
@@ -15,9 +15,9 @@ function compute_mvp(){
   const modelview_mat = glMatrix.mat4.create();
 
   //Stock info into a dedicated structure
-  mvp.projection = proj_mat;
-  mvp.modelview = modelview_mat;
-  mvp.mvp = modelview_mat;
+  info.webgl.mvp.projection = proj_mat;
+  info.webgl.mvp.modelview = modelview_mat;
+  info.webgl.mvp.mvp = modelview_mat;
 
   //-----------------------
 }
