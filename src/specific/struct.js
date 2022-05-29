@@ -41,9 +41,12 @@ var object = {
     xy: 0,
     rgb: 0,
     nxy: 0,
+
     size: 0,
     draw: 0,
+    idx_anar: 0,
     nb_point: 0,
+
     vbo_xy: 0,
     vbo_rgb: 0,
   },

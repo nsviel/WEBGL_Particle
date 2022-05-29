@@ -18,48 +18,17 @@ function runtime_point(){
   //-----------------------
 
   for(let i=0; i<object.point.xy.length; i++){
-    dist = fct_distance(object.point.xy[i], info.value.mouse)
+    let point = object.point.xy[i];
+    let normal = object.point.nxy[i];
 
-    //If inside mouse circle
-    if(dist < 0.2){
-      object.point.xy[i][0] += (0.2 - dist) * (object.point.xy[i][0] - info.value.mouse[0]) * 0.2 + object.point.nxy[i][0] * 0.001;
-      object.point.xy[i][1] += (0.2 - dist) * (object.point.xy[i][1] - info.value.mouse[1]) * 0.2 + object.point.nxy[i][1] * 0.001;
-    }
-    //Default displacment
-    else{
-      object.point.xy[i][0] += object.point.nxy[i][0] * info.param.speed;
-      object.point.xy[i][1] += object.point.nxy[i][1] * info.param.speed;
-    }
-
-    check_areas_limit(i);
+    point_anarchiste(point, normal);
+    point_displacment(point, normal);
+    point_manage_limit(i);
   }
 
   //-----------------------
 }
-function collision(dist, i){
-  let collid_thres = 0.01;
-  var cpt_collision = 0;
-  //-----------------------
 
-  //Collision action
-  if(dist < collid_thres){
-    let Nx = getRandomArbitrary(-1, 1);
-    let Ny = getRandomArbitrary(-1, 1);
-    object.point.nxy[i] = [Nx, Ny];
-    object.point.rgb[i] = [1, 0, 0, 1];
-
-    if(object.point.nb_point < 200){
-      cpt_collision++;
-    }
-  }
-
-  //Decreasing colorization
-  if(object.point.rgb[i][0] != 0){
-    object.point.rgb[i][0] -= 0.00025;
-  }
-
-  //-----------------------
-}
 
 //Creation / Deletion of object.point
 function add_points(nb_point){
@@ -140,8 +109,52 @@ function remove_point(nb_point){
   //-----------------------
 }
 
-//Check functions
-function check_point_quantity(){
+//Action functions
+function point_displacment(point, normal){
+  let mouse = info.value.mouse;
+  //-----------------------
+
+  //Compute distance
+  dist = fct_distance(point, mouse)
+
+  //If inside mouse circle
+  if(dist < 0.2){
+    point[0] += (0.2 - dist) * (point[0] - mouse[0]) * 0.2 + normal[0] * 0.001;
+    point[1] += (0.2 - dist) * (point[1] - mouse[1]) * 0.2 + normal[1] * 0.001;
+  }
+  //Default displacment
+  else{
+    point[0] += normal[0] * info.param.speed;
+    point[1] += normal[1] * info.param.speed;
+  }
+
+  //-----------------------
+}
+function point_collision(dist, i){
+  let collid_thres = 0.01;
+  var cpt_point_collision = 0;
+  //-----------------------
+
+  //point_collision action
+  if(dist < collid_thres){
+    let Nx = getRandomArbitrary(-1, 1);
+    let Ny = getRandomArbitrary(-1, 1);
+    object.point.nxy[i] = [Nx, Ny];
+    object.point.rgb[i] = [1, 0, 0, 1];
+
+    if(object.point.nb_point < 200){
+      cpt_point_collision++;
+    }
+  }
+
+  //Decreasing colorization
+  if(object.point.rgb[i][0] != 0){
+    object.point.rgb[i][0] -= 0.00025;
+  }
+
+  //-----------------------
+}
+function point_manage_quantity(){
   //-----------------------
 
   let nb_slider = info.param.nb_point;
@@ -155,26 +168,34 @@ function check_point_quantity(){
 
   //-----------------------
 }
-function check_areas_limit(i){
+function point_manage_limit(i){
+  let point = object.point.xy[i];
+  let normal = object.point.nxy[i];
   //-----------------------
 
   //Area borders
-  if(object.point.xy[i][0] < -info.param.limit[0]){
-    object.point.xy[i][0] = -info.param.limit[0];
-    object.point.nxy[i][0] = -object.point.nxy[i][0];
+  if(point[0] < -info.param.limit[0]){
+    point[0] = -info.param.limit[0];
+    normal[0] = -normal[0];
   }
-  if(object.point.xy[i][0] > info.param.limit[0]){
-    object.point.xy[i][0] = info.param.limit[0];
-    object.point.nxy[i][0] = -object.point.nxy[i][0];
+  if(point[0] > info.param.limit[0]){
+    point[0] = info.param.limit[0];
+    normal[0] = -normal[0];
   }
-  if(object.point.xy[i][1] < -info.param.limit[1]){
-    object.point.xy[i][1] = -info.param.limit[1];
-    object.point.nxy[i][1] = -object.point.nxy[i][1];
+  if(point[1] < -info.param.limit[1]){
+    point[1] = -info.param.limit[1];
+    normal[1] = -normal[1];
   }
-  if(object.point.xy[i][1] > info.param.limit[1]){
-    object.point.xy[i][1] = info.param.limit[1];
-    object.point.nxy[i][1] = -object.point.nxy[i][1];
+  if(point[1] > info.param.limit[1]){
+    point[1] = info.param.limit[1];
+    normal[1] = -normal[1];
   }
+
+  //-----------------------
+}
+function point_anarchiste(point, normal){
+  //-----------------------
+
 
   //-----------------------
 }

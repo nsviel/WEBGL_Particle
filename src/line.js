@@ -19,8 +19,8 @@ function runtime_line_all(){
     let dist_vec = new Array();
     for(let j=i+1; j<object.point.xy.length; j++){
       let dist = fct_distance(object.point.xy[i], object.point.xy[j])
-      collision(dist, i);
-      collision(dist, j);
+      point_collision(dist, i);
+      point_collision(dist, j);
       dist_vec.push([dist, j]);
     }
 
@@ -125,8 +125,8 @@ function knn(i){
       //Line link
       dist_vec.push([dist, j]);
 
-      //Collision
-      collision(dist, i);
+      //point_collision
+      point_collision(dist, i);
     }
   }
 
