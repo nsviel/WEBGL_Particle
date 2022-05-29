@@ -1,14 +1,44 @@
-
-function shadering() {
-  gl = info.context
+//Main functions
+function init_shader(){
   //-----------------------
 
   //Init shader stuff
   const [vs, fs] = create_shader();
-  program = init_program(gl, vs, fs);
+  init_program(vs, fs);
+  init_params();
+
+  //-----------------------
+}
+
+//Subfunctions
+function init_program(vs, fs) {
+  gl = info.context
+  //-----------------------
+
+  const vertexShader = load_shader(gl, gl.VERTEX_SHADER, vs);
+  const fragmentShader = load_shader(gl, gl.FRAGMENT_SHADER, fs);
+
+  // Create the shader program
+  const program = gl.createProgram();
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
+
+  // If creating the shader program failed, alert
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    alert('Unable to initialize the shader program: ' + gl.getinfoLog(program));
+    return null;
+  }
+
+  //-----------------------
+  info.program = program;
+}
+function init_params(){
+  gl = info.context
+  program = info.program;
+  //-----------------------
 
   //Stock info
-  info.program = program;
   info.attribut.location = gl.getAttribLocation(program, 'in_position');
   info.attribut.color = gl.getAttribLocation(program, 'in_color');
   info.uniform.in_mvp = gl.getUniformLocation(program, 'in_mvp');
@@ -82,25 +112,4 @@ function load_shader(gl, type, source) {
 
   //-----------------------
   return shader;
-}
-function init_program(gl, vs, fs) {
-  //-----------------------
-
-  const vertexShader = load_shader(gl, gl.VERTEX_SHADER, vs);
-  const fragmentShader = load_shader(gl, gl.FRAGMENT_SHADER, fs);
-
-  // Create the shader program
-  const program = gl.createProgram();
-  gl.attachShader(program, vertexShader);
-  gl.attachShader(program, fragmentShader);
-  gl.linkProgram(program);
-
-  // If creating the shader program failed, alert
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    alert('Unable to initialize the shader program: ' + gl.getinfoLog(program));
-    return null;
-  }
-
-  //-----------------------
-  return program;
 }

@@ -1,3 +1,4 @@
+//Main functions
 function init_line(){
   //-----------------------
 
@@ -5,32 +6,9 @@ function init_line(){
 
   //-----------------------
 }
-function collision(dist, i){
-  let collid_thres = 0.01;
-  var cpt_collision = 0;
-  //-----------------------
 
-  //Collision action
-  if(dist < collid_thres){
-    let Nx = getRandomArbitrary(-1, 1);
-    let Ny = getRandomArbitrary(-1, 1);
-    points.nxy[i] = [Nx, Ny];
-    points.rgb[i] = [1, 0, 0, 1];
-
-    if(points.nb_point < 200){
-      cpt_collision++;
-    }
-  }
-
-  //Decreasing colorization
-  if(points.rgb[i][0] != 0){
-    points.rgb[i][0] -= 0.00025;
-  }
-
-  //-----------------------
-}
-
-function move_line_all(){
+//Make lines with all points
+function runtime_line_all(){
   //-----------------------
 
   //kNN point lines
@@ -94,7 +72,8 @@ function create_line_all(XY, RGB, dist_vec, i){
   //-----------------------
 }
 
-function move_line_knn(){
+//Make line with kNN
+function runtime_line_knn(){
   //-----------------------
 
   let XY = [];
