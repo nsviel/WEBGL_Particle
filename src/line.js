@@ -57,7 +57,6 @@ function create_line_all(XY, RGB, dist_vec, i){
 
   for(let j=0; j<dist_vec.length; j++){
     let dist = dist_vec[j][0];
-    //let alpha = 0.8 - dist / (dist_max);
     let alpha = - Math.log( dist / (dist_max)) - 0.5;
 
     if(alpha > 0 && dist < dist_max){

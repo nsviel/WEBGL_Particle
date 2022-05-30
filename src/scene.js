@@ -42,13 +42,15 @@ function draw_scene(){
 function init_parameter(){
   //-----------------------
 
-  info.param.limit = [0.8, 0.8];
   info.param.nb_point = 50;
-  info.param.bkg = 1;
   info.param.nb_point = 50;
   info.param.nb_link = 3;
+
+  info.param.bkg = 1;
   info.param.primitiv_rgb = 0;
   info.param.primitiv_alpha = 0.5;
+
+  info.param.limit = [0.8, 0.8];
   info.param.speed = 0.001;
   info.param.point_size = 5;
   info.param.line_dist_max = 0.5;

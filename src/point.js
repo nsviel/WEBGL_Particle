@@ -23,7 +23,7 @@ function runtime_point(){
 
     point_anarchiste(point, normal);
     point_displacment(point, normal);
-    point_manage_limit(i);
+    point_manage_limit(point, normal);
   }
 
   //-----------------------
@@ -110,26 +110,6 @@ function remove_point(nb_point){
 }
 
 //Action functions
-function point_displacment(point, normal){
-  let mouse = info.value.mouse;
-  //-----------------------
-
-  //Compute distance
-  dist = fct_distance(point, mouse)
-
-  //If inside mouse circle
-  if(dist < 0.2){
-    point[0] += (0.2 - dist) * (point[0] - mouse[0]) * 0.2 + normal[0] * 0.001;
-    point[1] += (0.2 - dist) * (point[1] - mouse[1]) * 0.2 + normal[1] * 0.001;
-  }
-  //Default displacment
-  else{
-    point[0] += normal[0] * info.param.speed;
-    point[1] += normal[1] * info.param.speed;
-  }
-
-  //-----------------------
-}
 function point_collision(dist, i){
   let collid_thres = 0.01;
   var cpt_point_collision = 0;
@@ -168,9 +148,27 @@ function point_manage_quantity(){
 
   //-----------------------
 }
-function point_manage_limit(i){
-  let point = object.point.xy[i];
-  let normal = object.point.nxy[i];
+function point_displacment(point, normal){
+  let mouse = info.value.mouse;
+  //-----------------------
+
+  //Compute distance
+  dist = fct_distance(point, mouse)
+
+  //If inside mouse circle
+  if(dist < 0.2){
+    point[0] += (0.2 - dist) * (point[0] - mouse[0]) * 0.2 + normal[0] * 0.001;
+    point[1] += (0.2 - dist) * (point[1] - mouse[1]) * 0.2 + normal[1] * 0.001;
+  }
+  //Default displacment
+  else{
+    point[0] += normal[0] * info.param.speed;
+    point[1] += normal[1] * info.param.speed;
+  }
+
+  //-----------------------
+}
+function point_manage_limit(point, normal){
   //-----------------------
 
   //Area borders
