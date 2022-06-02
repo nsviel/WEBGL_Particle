@@ -22,13 +22,20 @@ var info = {
     },
   },
   param:{
-    bkg: 1,
     nb_point: 0,
-    primitiv_rgb: 0,
-    primitiv_alpha: 0,
     speed: 0,
     line_dist_max: 0,
     limit: 0,
+    mouse_area: 0,
+    collision_area: 0,
+  },
+  color:{
+    bkg: 0,
+    dark_mode: false,
+    primitiv_rgb: 0,
+    primitiv_alpha: 0,
+    mouse_rgb: 0,
+    collision_rgb: 0,
   },
   value:{
     mouse: 0,

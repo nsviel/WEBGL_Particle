@@ -5,7 +5,7 @@ function main() {
   //-----------------------
 
   init_wgl_context();
-  init_parameter();
+  init_configuration();
   init_ui();
   init_shader();
 

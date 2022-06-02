@@ -1,6 +1,7 @@
 //Main functions
 function loop(){
   gl = info.webgl.context;
+  rgb = info.color.bkg;
   //-----------------------
 
   //Init
@@ -9,7 +10,7 @@ function loop(){
 
   //main loop
   function render() {
-    gl.clearColor(info.param.bkg, info.param.bkg, info.param.bkg, 1.0);
+    gl.clearColor(rgb[0], rgb[1], rgb[2], 1.0);
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
@@ -39,24 +40,6 @@ function draw_scene(){
 }
 
 //Init functions
-function init_parameter(){
-  //-----------------------
-
-  info.param.nb_point = 50;
-  info.param.nb_point = 50;
-  info.param.nb_link = 3;
-
-  info.param.bkg = 1;
-  info.param.primitiv_rgb = 0;
-  info.param.primitiv_alpha = 0.5;
-
-  info.param.limit = [0.8, 0.8];
-  info.param.speed = 0.001;
-  info.param.point_size = 5;
-  info.param.line_dist_max = 0.5;
-
-  //-----------------------
-}
 function init_object(){
   let point_number = info.param.nb_point;
   //-----------------------

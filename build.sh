@@ -24,11 +24,12 @@ webgl/webgl.js \
 webgl/shader.js \
 webgl/camera.js \
 \
-point.js \
-line.js \
-scene.js \
+scene/point.js \
+scene/line.js \
+scene/scene.js \
+scene/config.js \
 \
-| uglifyjs -o build/particule.js
+| uglifyjs -o build/particle.js
 
 #Run program in browser
 cd ..

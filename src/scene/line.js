@@ -11,7 +11,7 @@ function init_line(){
 function runtime_line_all(){
   //-----------------------
 
-  //kNN point lines
+  //create all line
   let XY = [];
   let RGB = [];
   for(let i=0; i<object.point.xy.length; i++){
@@ -29,6 +29,7 @@ function runtime_line_all(){
   }
 
   //Mouse centered lines
+  let rgb = info.color.mouse_rgb;
   for(let i=0; i<object.point.xy.length; i++){
     dist = fct_distance(object.point.xy[i], info.value.mouse)
     let alpha = - Math.log( dist / (0.2));
@@ -38,8 +39,8 @@ function runtime_line_all(){
       XY.push(info.value.mouse)
       XY.push(object.point.xy[i])
 
-      RGB.push([0,0,1,alpha])
-      RGB.push([0,0,1,alpha])
+      RGB.push([rgb[0], rgb[1], rgb[2], alpha])
+      RGB.push([rgb[0], rgb[1], rgb[2], alpha])
     }
   }
 
@@ -50,14 +51,14 @@ function runtime_line_all(){
   //-----------------------
 }
 function create_line_all(XY, RGB, dist_vec, i){
-  let rgb_alpha = info.param.primitiv_alpha;
-  let rgb = info.param.primitiv_rgb;
+  let rgb = info.color.primitiv_rgb;
   let dist_max = info.param.line_dist_max;
+  let dark_mode = info.color.dark_mode;
   //-----------------------
 
   for(let j=0; j<dist_vec.length; j++){
     let dist = dist_vec[j][0];
-    let alpha = - Math.log( dist / (dist_max)) - 0.5;
+    var alpha = - Math.log( dist / dist_max) - 0.5;
 
     if(alpha > 0 && dist < dist_max){
       XY.push(object.point.xy[i]);
@@ -89,8 +90,8 @@ function runtime_line_knn(){
   //-----------------------
 }
 function create_line_knn(XY, RGB, dist_vec, i){
-  let rgb_alpha = info.param.primitiv_alpha;
-  let rgb = info.param.primitiv_rgb;
+  let rgb_alpha = info.color.primitiv_alpha;
+  let rgb = info.color.primitiv_rgb;
   let nb_link = info.param.nb_link;
   let dist_max = 0.5;
   //-----------------------
@@ -98,8 +99,11 @@ function create_line_knn(XY, RGB, dist_vec, i){
   if(dist_vec.length  >= nb_link){
     for(let j=0; j<nb_link; j++){
       let dist = dist_vec[j][0];
-      //let alpha = 0.8 - dist / (dist_max);
-      let alpha = - Math.log( dist / (dist_max)) - 0.5;
+      if(info.color.dark_mode == false){
+        var alpha = - Math.log( dist / (dist_max)) - 0.5;
+      }else{
+        var alpha = - Math.log( dist / (dist_max)) + 0.5;
+      }
 
       if(alpha > 0){
         XY.push(object.point.xy[i]);
