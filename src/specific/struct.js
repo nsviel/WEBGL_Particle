@@ -33,7 +33,6 @@ var info = {
     bkg: 0,
     dark_mode: false,
     primitiv_rgb: 0,
-    primitiv_alpha: 0,
     mouse_rgb: 0,
     collision_rgb: 0,
   },

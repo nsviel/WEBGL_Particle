@@ -68,7 +68,7 @@ function create_points(nb_point){
 
   let lim_x = info.param.limit[0];
   let lim_y = info.param.limit[1];
-  let rgb = info.color.primitiv_rgb;
+  let rgb = info.color.rgb_object;
 
   //Location
   let XY = [];
@@ -81,7 +81,7 @@ function create_points(nb_point){
   //Color
   let RGB = [];
   for(let i=0; i<nb_point; i++){
-    RGB.push([rgb, rgb, rgb, 1]);
+    RGB.push([rgb[0], rgb[1], rgb[2], 1]);
   }
 
   //Normal
@@ -112,17 +112,17 @@ function remove_point(nb_point){
 
 //Action functions
 function point_recolorization(color){
-  let rgb = info.color.primitiv_rgb;
+  let rgb = info.color.rgb_object;
   let dark_mode = info.color.dark_mode;
   //-----------------------
 
   for(let j=0; j<3; j++){
     if(dark_mode == false){
-      if(color[j] >= rgb){
+      if(color[j] >= rgb[j]){
         color[j] -= 0.00025;
       }
     }else{
-      if(color[j] <= rgb){
+      if(color[j] <= rgb[j]){
         color[j] += 0.00025;
       }
     }
@@ -133,7 +133,7 @@ function point_recolorization(color){
 }
 function point_collision(dist, i){
   let collid_thres = info.param.collision_area;
-  let rgb = info.color.collision_rgb;
+  let rgb = info.color.rgb_collision;
   //-----------------------
 
   //point_collision action
@@ -172,7 +172,7 @@ function point_manage_quantity(){
 function point_displacment(point, normal, color){
   let mouse = info.value.mouse;
   let mouse_area = info.param.mouse_area;
-  let rgb = info.color.mouse_rgb;
+  let rgb = info.color.rgb_mouse;
   //-----------------------
 
   //Compute distance

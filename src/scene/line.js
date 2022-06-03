@@ -29,7 +29,7 @@ function runtime_line_all(){
   }
 
   //Mouse centered lines
-  let rgb = info.color.mouse_rgb;
+  let rgb = info.color.rgb_mouse;
   for(let i=0; i<object.point.xy.length; i++){
     dist = fct_distance(object.point.xy[i], info.value.mouse)
     let alpha = - Math.log( dist / (0.2));
@@ -51,7 +51,7 @@ function runtime_line_all(){
   //-----------------------
 }
 function create_line_all(XY, RGB, dist_vec, i){
-  let rgb = info.color.primitiv_rgb;
+  let rgb = info.color.rgb_object;
   let dist_max = info.param.line_dist_max;
   let dark_mode = info.color.dark_mode;
   //-----------------------
@@ -64,8 +64,8 @@ function create_line_all(XY, RGB, dist_vec, i){
       XY.push(object.point.xy[i]);
       XY.push(object.point.xy[dist_vec[j][1]]);
 
-      RGB.push([rgb, rgb, rgb, alpha])
-      RGB.push([rgb, rgb, rgb, alpha])
+      RGB.push([rgb[0], rgb[1], rgb[2], alpha])
+      RGB.push([rgb[0], rgb[1], rgb[2], alpha])
     }
   }
 
@@ -90,10 +90,9 @@ function runtime_line_knn(){
   //-----------------------
 }
 function create_line_knn(XY, RGB, dist_vec, i){
-  let rgb_alpha = info.color.primitiv_alpha;
-  let rgb = info.color.primitiv_rgb;
+  let rgb = info.color.rgb_object;
   let nb_link = info.param.nb_link;
-  let dist_max = 0.5;
+  let dist_max = info.param.line_dist_max;
   //-----------------------
 
   if(dist_vec.length  >= nb_link){
@@ -109,8 +108,8 @@ function create_line_knn(XY, RGB, dist_vec, i){
         XY.push(object.point.xy[i]);
         XY.push(object.point.xy[dist_vec[j][1]]);
 
-        RGB.push([rgb, rgb, rgb, alpha])
-        RGB.push([rgb, rgb, rgb, alpha])
+        RGB.push([rgb[0], rgb[1], rgb[2], alpha])
+        RGB.push([rgb[0], rgb[1], rgb[2], alpha])
       }
     }
   }

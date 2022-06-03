@@ -23,11 +23,10 @@ function init_parameter(){
 
   //Colors
   info.color.dark_mode = true;
-  info.color.bkg = [1, 1, 1];
-  info.color.primitiv_rgb = 0;
-  info.color.primitiv_alpha = 0.5;
-  info.color.mouse_rgb = [0, 0.7, 0.8];
-  info.color.collision_rgb = [1, 0, 0];
+  info.color.rgb_bkg = [1, 1, 1];
+  info.color.rgb_object = [0, 0, 0];
+  info.color.rgb_mouse = [0, 0.7, 0.8];
+  info.color.rgb_collision = [1, 0, 0];
 
   //-----------------------
 }
@@ -35,8 +34,8 @@ function init_config(){
   //-----------------------
 
   if(info.color.dark_mode){
-    info.color.bkg = [0.36, 0.38, 0.44];
-    info.color.primitiv_rgb = 1;
+    info.color.rgb_bkg = [0.11, 0.13, 0.17];
+    info.color.rgb_object = [1, 1, 1];
   }
 
   //-----------------------

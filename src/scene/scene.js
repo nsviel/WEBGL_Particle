@@ -1,7 +1,7 @@
 //Main functions
 function loop(){
   gl = info.webgl.context;
-  rgb = info.color.bkg;
+  rgb = info.color.rgb_bkg;
   //-----------------------
 
   //Init
