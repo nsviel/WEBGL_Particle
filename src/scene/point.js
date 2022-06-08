@@ -68,7 +68,7 @@ function create_points(nb_point){
 
   let lim_x = info.param.limit[0];
   let lim_y = info.param.limit[1];
-  let rgb = info.color.rgb_object;
+  let rgb = info.color.rgb_obj;
 
   //Location
   let XY = [];
@@ -112,7 +112,7 @@ function remove_point(nb_point){
 
 //Action functions
 function point_recolorization(color){
-  let rgb = info.color.rgb_object;
+  let rgb = info.color.rgb_obj;
   let dark_mode = info.color.dark_mode;
   //-----------------------
 

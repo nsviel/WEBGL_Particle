@@ -22,9 +22,9 @@ function init_parameter(){
   info.param.collision_area = 0.01;
 
   //Colors
-  info.color.dark_mode = true;
-  info.color.rgb_bkg = [1, 1, 1];
-  info.color.rgb_object = [0, 0, 0];
+  info.color.dark_mode = false;
+  info.color.rgb_bkg = [1, 1, 1, 1];
+  info.color.rgb_obj = [0, 0, 0, 1];
   info.color.rgb_mouse = [0, 0.7, 0.8];
   info.color.rgb_collision = [1, 0, 0];
 
@@ -34,8 +34,8 @@ function init_config(){
   //-----------------------
 
   if(info.color.dark_mode){
-    info.color.rgb_bkg = [0.11, 0.13, 0.17];
-    info.color.rgb_object = [1, 1, 1];
+    info.color.rgb_bkg = [0.11, 0.13, 0.17, 1];
+    info.color.rgb_obj = [1, 1, 1, 1];
   }
 
   //-----------------------

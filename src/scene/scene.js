@@ -1,7 +1,7 @@
 //Main functions
 function loop(){
-  gl = info.webgl.context;
-  rgb = info.color.rgb_bkg;
+  let gl = info.webgl.context;
+  let rgb = info.color.rgb_bkg;
   //-----------------------
 
   //Init
@@ -9,8 +9,8 @@ function loop(){
   init_scene();
 
   //main loop
-  function render() {
-    gl.clearColor(rgb[0], rgb[1], rgb[2], 1.0);
+  function render(){
+    gl.clearColor(rgb[0], rgb[1], rgb[2], rgb[3]);
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
