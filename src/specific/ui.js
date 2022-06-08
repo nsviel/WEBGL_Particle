@@ -25,6 +25,7 @@ function runtime_ui(){
   let point_size = document.getElementById("slider_size").value;
   let point_speed = document.getElementById("slider_speed").value;
   let line_dist_max = document.getElementById("slider_line_dist_max").value;
+  let dark_mode = document.getElementById("checkbox_dm").checked;
 
   //Compteur
   document.getElementById("cpt_points").value = point_number;
@@ -33,6 +34,10 @@ function runtime_ui(){
   document.getElementById("cpt_line_dist_max").value = line_dist_max;
 
   //Internal parameter
+  if(dark_mode != info.param.dark_mode){
+    info.param.dark_mode = dark_mode;
+    init_config(dark_mode);
+  }
   info.param.line_dist_max = line_dist_max;
   info.param.speed = point_speed;
   if(point_number != info.param.nb_point){

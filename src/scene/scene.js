@@ -1,7 +1,6 @@
 //Main functions
 function loop(){
   let gl = info.webgl.context;
-  let rgb = info.color.rgb_bkg;
   //-----------------------
 
   //Init
@@ -10,6 +9,7 @@ function loop(){
 
   //main loop
   function render(){
+    let rgb = info.color.rgb_bkg;
     gl.clearColor(rgb[0], rgb[1], rgb[2], rgb[3]);
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);

@@ -34,18 +34,24 @@ function runtime_line_all(){
   }
 
   //Mouse centered lines
-  let rgb = info.color.rgb_mouse;
+  let rgb_mou = info.color.rgb_mouse;
+  var rgb_bkg = info.color.rgb_bkg;
   for(let i=0; i<object.point.xy.length; i++){
     dist = fct_distance(object.point.xy[i], info.value.mouse)
-    let alpha = - Math.log( dist / (0.2));
 
     //If inside mouse circle
-    if(dist < 0.2 && alpha > 0.1){
+    if(dist < 0.2){
+      let dist_n = dist / 0.2;
+      let r = dist_n * rgb_bkg[0] + (1 - dist_n) * rgb_mou[0]
+      let g = dist_n * rgb_bkg[1] + (1 - dist_n) * rgb_mou[1]
+      let b = dist_n * rgb_bkg[2] + (1 - dist_n) * rgb_mou[2]
+      let color = [r, g, b, 1];
+
       XY.push(info.value.mouse)
       XY.push(object.point.xy[i])
 
-      RGB.push([rgb[0], rgb[1], rgb[2], alpha])
-      RGB.push([rgb[0], rgb[1], rgb[2], alpha])
+      RGB.push(color)
+      RGB.push(color)
     }
   }
 
@@ -58,8 +64,6 @@ function runtime_line_all(){
 function create_line_all(XY, RGB, dist_vec, i){
   var rgb_obj = info.color.rgb_obj;
   var rgb_bkg = info.color.rgb_bkg;
-  let dist_max = info.param.line_dist_max;
-  let dark_mode = info.color.dark_mode;
   //-----------------------
 
   for(let j=0; j<dist_vec.length; j++){

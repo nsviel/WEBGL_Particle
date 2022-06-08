@@ -119,14 +119,13 @@ function point_recolorization(color){
   for(let j=0; j<3; j++){
     if(dark_mode == false){
       if(color[j] >= rgb[j]){
-        color[j] -= 0.00025;
+        color[j] -= 0.005;
       }
     }else{
       if(color[j] <= rgb[j]){
-        color[j] += 0.00025;
+        color[j] += 0.005;
       }
     }
-
   }
 
   //-----------------------
