@@ -34,6 +34,7 @@ function runtime_line_all(XY, RGB){
   //-----------------------
 }
 function runtime_compute_distance(i){
+  let dist_col = info.param.collision_area;
   let dist_max = info.param.line_dist_max;
   let dist_vec = new Array();
   //-----------------------
@@ -41,11 +42,16 @@ function runtime_compute_distance(i){
   for(let j=i+1; j<object.point.xy.length; j++){
     let dist = fct_distance(object.point.xy[i], object.point.xy[j]);
 
+    //Take for line
     if(dist < dist_max){
       let dist_n = dist / dist_max;
+      dist_vec.push([dist_n, j]);
+    }
+
+    //Take for collision
+    if(dist < dist_col){
       point_collision(dist, i);
       point_collision(dist, j);
-      dist_vec.push([dist_n, j]);
     }
   }
 

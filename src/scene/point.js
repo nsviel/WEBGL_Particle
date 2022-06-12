@@ -182,14 +182,11 @@ function point_collision(dist, i){
   //-----------------------
 
   //point_collision action
-  let cpt_point_collision = 0;
-  if(dist < collid_thres){
-    let Nx = getRandomArbitrary(-1, 1);
-    let Ny = getRandomArbitrary(-1, 1);
+  let Nx = getRandomArbitrary(-1, 1);
+  let Ny = getRandomArbitrary(-1, 1);
 
-    object.point.nxy[i] = [Nx, Ny];
-    object.point.rgb[i] = collid_rgb;
-  }
+  object.point.nxy[i] = [Nx, Ny];
+  object.point.rgb[i] = collid_rgb;
 
   //-----------------------
 }
