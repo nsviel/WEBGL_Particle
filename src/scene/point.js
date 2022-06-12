@@ -20,16 +20,15 @@ function runtime_point(){
   for(let i=0; i<object.point.xy.length; i++){
     let point = object.point.xy[i];
     let normal = object.point.nxy[i];
-    let color = object.point.rgb[i];
 
     point_anarchiste(point, normal);
-    point_displacment(point, normal, color);
+    point_displacment(point, normal, i);
     point_manage_limit(point, normal);
+    point_recolorization(i);
   }
 
   //-----------------------
 }
-
 
 //Creation / Deletion of object.point
 function add_points(nb_point){
@@ -66,22 +65,22 @@ function add_points_xy(xy){
 function create_points(nb_point){
   //-----------------------
 
-  let lim_x = info.param.limit[0];
-  let lim_y = info.param.limit[1];
+  let lim_x = info.param.limit_inner_x;
+  let lim_y = info.param.limit_inner_y;
   let rgb = info.color.rgb_obj;
 
   //Location
   let XY = [];
   for(let i=0; i<nb_point; i++){
-    let X = getRandomArbitrary(-lim_x, lim_x);
-    let Y = getRandomArbitrary(-lim_y, lim_y);
+    let X = getRandomArbitrary(lim_x[0], lim_x[1]);
+    let Y = getRandomArbitrary(lim_y[0], lim_y[1]);
     XY.push([X, Y]);
   }
 
   //Color
   let RGB = [];
   for(let i=0; i<nb_point; i++){
-    RGB.push([rgb[0], rgb[1], rgb[2], 1]);
+    RGB.push(rgb);
   }
 
   //Normal
@@ -94,6 +93,34 @@ function create_points(nb_point){
 
   //-----------------------
   return [XY, RGB, Nxy];
+}
+function create_points_bordure(){
+  //-----------------------
+
+  //Location
+  let X, Y;
+  let rgb = get_value(info.color.rgb_obj);
+  let topright = randomDigit(0, 1);
+  if(topright == 0){
+    X = getRandomArbitrary(info.param.limit_outer_x[0], info.param.limit_outer_x[1]);
+    Y = randomDigit(info.param.limit_outer_y[0], info.param.limit_outer_y[1]);
+  }else if(topright == 1){
+    X = randomDigit(info.param.limit_outer_x[0], info.param.limit_outer_x[1]);
+    Y = getRandomArbitrary(info.param.limit_outer_y[0], info.param.limit_outer_y[1]);
+  }
+
+  say([X, Y])
+  object.point.xy.push([X, Y]);
+
+  //Color
+  object.point.rgb.push(rgb);
+
+  //Normal
+  let Nx = getRandomArbitrary(-1, 1);
+  let Ny = getRandomArbitrary(-1, 1);
+  object.point.nxy.push([Nx, Ny]);
+
+  //-----------------------
 }
 function remove_point(nb_point){
   //-----------------------
@@ -109,22 +136,41 @@ function remove_point(nb_point){
 
   //-----------------------
 }
+function remove_point_bordure(point){
+  //-----------------------
+
+  if(point[0] < info.param.limit_outer_x[0] || point[0] > info.param.limit_outer_x[1] ||
+    point[1] < info.param.limit_outer_y[0] || point[1] > info.param.limit_outer_y[1]){
+    //Supress point at the border
+    let idx = object.point.xy.indexOf(point);
+    object.point.xy.splice(idx, 1);
+    object.point.nxy.splice(idx, 1);
+    object.point.rgb.splice(idx, 1);
+    object.point.nb_point = object.point.xy.length;
+
+    //Create new point
+    create_points_bordure();
+  }
+
+  //-----------------------
+}
 
 //Action functions
-function point_recolorization(color){
-  let rgb = info.color.rgb_obj;
-  let dark_mode = info.color.dark_mode;
+function point_recolorization(i){
+  let rgb_obj = info.color.rgb_obj;
+  let rgb_pt = object.point.rgb[i];
+  let rgb_rate = 0.025;
   //-----------------------
 
   for(let j=0; j<3; j++){
-    if(dark_mode == false){
-      if(color[j] >= rgb[j]){
-        color[j] -= 0.005;
-      }
-    }else{
-      if(color[j] <= rgb[j]){
-        color[j] += 0.005;
-      }
+    let diff = rgb_obj[j] - rgb_pt[j];
+
+    if(Math.abs(diff) < rgb_rate){
+      rgb_pt[j] = rgb_obj[j];
+    }else if(diff < 0){
+      rgb_pt[j] -= rgb_rate;
+    }else if(diff > 0){
+      rgb_pt[j] += rgb_rate;
     }
   }
 
@@ -132,7 +178,7 @@ function point_recolorization(color){
 }
 function point_collision(dist, i){
   let collid_thres = info.param.collision_area;
-  let rgb = info.color.rgb_collision;
+  let collid_rgb = get_value(info.color.rgb_collid);
   //-----------------------
 
   //point_collision action
@@ -140,18 +186,10 @@ function point_collision(dist, i){
   if(dist < collid_thres){
     let Nx = getRandomArbitrary(-1, 1);
     let Ny = getRandomArbitrary(-1, 1);
+
     object.point.nxy[i] = [Nx, Ny];
-    object.point.rgb[i] = [rgb[0], rgb[1], rgb[2], 1];
-
-    if(object.point.nb_point < 200){
-      cpt_point_collision++;
-    }
+    object.point.rgb[i] = collid_rgb;
   }
-
-  //Recolorization after collid
-  let color = object.point.rgb[i];
-  point_recolorization(color)
-
 
   //-----------------------
 }
@@ -168,23 +206,23 @@ function point_manage_quantity(){
 
   //-----------------------
 }
-function point_displacment(point, normal, color){
-  let mouse = info.value.mouse;
+function point_displacment(point, normal, i){
+  let mouse_xy = info.value.mouse;
   let mouse_area = info.param.mouse_area;
-  let rgb = info.color.rgb_mouse;
+  let rgb_mo = get_value(info.color.rgb_mouse);
   //-----------------------
 
   //Compute distance
-  dist = fct_distance(point, mouse)
+  dist = fct_distance(point, mouse_xy)
 
   //If inside mouse circle
   if(dist < mouse_area){
-    point[0] += (0.2 - dist) * (point[0] - mouse[0]) * 0.2 + normal[0] * 0.001;
-    point[1] += (0.2 - dist) * (point[1] - mouse[1]) * 0.2 + normal[1] * 0.001;
+    //Repulsif displacment
+    point[0] += (0.2 - dist) * (point[0] - mouse_xy[0]) * 0.2 + normal[0] * 0.001;
+    point[1] += (0.2 - dist) * (point[1] - mouse_xy[1]) * 0.2 + normal[1] * 0.001;
 
-    color[0] = rgb[0];
-    color[1] = rgb[1];
-    color[2] = rgb[2];
+    //Color
+    object.point.rgb[i] = rgb_mo;
   }
   //Default displacment
   else{
@@ -198,21 +236,25 @@ function point_manage_limit(point, normal){
   //-----------------------
 
   //Area borders
-  if(point[0] < -info.param.limit[0]){
-    point[0] = -info.param.limit[0];
-    normal[0] = -normal[0];
-  }
-  if(point[0] > info.param.limit[0]){
-    point[0] = info.param.limit[0];
-    normal[0] = -normal[0];
-  }
-  if(point[1] < -info.param.limit[1]){
-    point[1] = -info.param.limit[1];
-    normal[1] = -normal[1];
-  }
-  if(point[1] > info.param.limit[1]){
-    point[1] = info.param.limit[1];
-    normal[1] = -normal[1];
+  if(info.param.limitless){
+    remove_point_bordure(point);
+  }else{
+    if(point[0] < info.param.limit_inner_x[0]){
+      point[0] = info.param.limit_inner_x[0];
+      normal[0] = -normal[0];
+    }
+    if(point[0] > info.param.limit_inner_x[1]){
+      point[0] = info.param.limit_inner_x[1];
+      normal[0] = -normal[0];
+    }
+    if(point[1] < info.param.limit_inner_y[0]){
+      point[1] = info.param.limit_inner_y[0];
+      normal[1] = -normal[1];
+    }
+    if(point[1] > info.param.limit_inner_y[1]){
+      point[1] = info.param.limit_inner_y[1];
+      normal[1] = -normal[1];
+    }
   }
 
   //-----------------------

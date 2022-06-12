@@ -6,36 +6,58 @@ function init_line(){
 
   //-----------------------
 }
-
-//Make lines with all object.point
-function runtime_line_all(){
-  let dist_max = info.param.line_dist_max;
+function runtime_line(){
   //-----------------------
 
   //create all line
   let XY = [];
   let RGB = [];
+  runtime_line_all(XY, RGB);
+  runtime_mouse(XY, RGB);
+
+  object.line.xy = XY;
+  object.line.rgb = RGB;
+  object.line.nb_line = XY.length;
+
+  //-----------------------
+}
+
+//Make lines with all object.point
+function runtime_line_all(XY, RGB){
+  //-----------------------
+
   for(let i=0; i<object.point.xy.length; i++){
-    //Compute all distances
-    let dist_vec = new Array();
-    for(let j=i+1; j<object.point.xy.length; j++){
-      let dist = fct_distance(object.point.xy[i], object.point.xy[j]);
-
-      if(dist < dist_max){
-        let dist_n = dist / dist_max;
-        point_collision(dist, i);
-        point_collision(dist, j);
-        dist_vec.push([dist_n, j]);
-      }
-    }
-
-    //Create according lines
+    let dist_vec = runtime_compute_distance(i);
     create_line_all(XY, RGB, dist_vec, i);
   }
 
-  //Mouse centered lines
+  //-----------------------
+}
+function runtime_compute_distance(i){
+  let dist_max = info.param.line_dist_max;
+  let dist_vec = new Array();
+  //-----------------------
+
+  for(let j=i+1; j<object.point.xy.length; j++){
+    let dist = fct_distance(object.point.xy[i], object.point.xy[j]);
+
+    if(dist < dist_max){
+      let dist_n = dist / dist_max;
+      point_collision(dist, i);
+      point_collision(dist, j);
+      dist_vec.push([dist_n, j]);
+    }
+  }
+
+  //-----------------------
+  return dist_vec;
+}
+function runtime_mouse(XY, RGB){
   let rgb_mou = info.color.rgb_mouse;
-  var rgb_bkg = info.color.rgb_bkg;
+  let rgb_bkg = info.color.rgb_bkg;
+  //-----------------------
+
+  //Mouse centered lines
   for(let i=0; i<object.point.xy.length; i++){
     dist = fct_distance(object.point.xy[i], info.value.mouse)
 
@@ -55,15 +77,11 @@ function runtime_line_all(){
     }
   }
 
-  object.line.xy = XY;
-  object.line.rgb = RGB;
-  object.line.nb_point = object.line.xy.length;
-
   //-----------------------
 }
 function create_line_all(XY, RGB, dist_vec, i){
-  var rgb_obj = info.color.rgb_obj;
-  var rgb_bkg = info.color.rgb_bkg;
+  let rgb_obj = info.color.rgb_obj;
+  let rgb_bkg = info.color.rgb_bkg;
   //-----------------------
 
   for(let j=0; j<dist_vec.length; j++){
@@ -96,7 +114,7 @@ function runtime_line_knn(){
 
   object.line.xy = XY;
   object.line.rgb = RGB;
-  object.line.nb_point = object.line.xy.length;
+  object.line.nb_line = XY.length;
 
   //-----------------------
 }

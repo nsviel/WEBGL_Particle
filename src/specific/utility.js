@@ -30,6 +30,9 @@ function create_matrix(m, n){
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
+function randomDigit(min, max){
+  return Math.floor(Math.random() * Math.floor(2)) * (max - min) + min;;
+}
 function sayVecAlert(arr){
   alert(arr.join('\n'))
 }
@@ -50,6 +53,9 @@ function getRelativeMousePosition(event, target) {
 }
 
 // assumes target or event.target is canvas
+function get_value(value){
+  return Object.assign({}, value);
+}
 function getNoPaddingNoBorderCanvasRelativeMousePosition(event, target) {
   target = target || event.target;
   var pos = getRelativeMousePosition(event, target);

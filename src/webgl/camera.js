@@ -8,8 +8,8 @@ function compute_mvp(){
   const zNear = 0.1;
   const zFar = 100.0;
   const proj_mat = glMatrix.mat4.create();
-  //lMatrix.mat4.perspective(proj_mat, fieldOfView, aspect, zNear, zFar);
-  glMatrix.mat4.ortho(proj_mat, -1.0, 1.0, -1.0, 1.0, zNear, zFar);
+  glMatrix.mat4.perspective(proj_mat, fieldOfView, aspect, zNear, zFar);
+  //glMatrix.mat4.ortho(proj_mat, -1.0, 1.0, -1.0, 1.0, zNear, zFar);
 
   // Model view matrix
   const modelview_mat = glMatrix.mat4.create();

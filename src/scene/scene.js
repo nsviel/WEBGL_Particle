@@ -30,7 +30,7 @@ function draw_scene(){
   //Runtime functions
   runtime_ui();
   runtime_point();
-  runtime_line_all();
+  runtime_line();
 
   //Draw objects
   draw_point();

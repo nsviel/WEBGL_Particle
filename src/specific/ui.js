@@ -26,6 +26,7 @@ function runtime_ui(){
   let point_speed = document.getElementById("slider_speed").value;
   let line_dist_max = document.getElementById("slider_line_dist_max").value;
   let dark_mode = document.getElementById("checkbox_dm").checked;
+  let limitless = document.getElementById("limitless").checked;
 
   //Compteur
   document.getElementById("cpt_points").value = point_number;
@@ -37,6 +38,9 @@ function runtime_ui(){
   if(dark_mode != info.param.dark_mode){
     info.param.dark_mode = dark_mode;
     init_config(dark_mode);
+  }
+  if(limitless != info.param.limitless){
+    info.param.limitless = limitless;
   }
   info.param.line_dist_max = line_dist_max;
   info.param.speed = point_speed;

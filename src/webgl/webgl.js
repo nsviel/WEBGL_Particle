@@ -21,6 +21,8 @@ function init_context(){
     return;
   }
 
+  gl.enable(gl.DEPTH_TEST)
+
   info.webgl.context = gl;
   info.webgl.canvas = canvas;
 
@@ -80,7 +82,7 @@ function draw_object(data){
   gl.enableVertexAttribArray(info.shader.attribut.color);
 
   //Draw
-  gl.drawArrays(data.draw, 0, data.nb_point);
+  gl.drawArrays(data.draw, 0, data.xy.length);
 
   //-----------------------
 }

@@ -28,6 +28,7 @@ var info = {
     limit: 0,
     mouse_area: 0,
     collision_area: 0,
+    limitless: false,
   },
   color:{
     bkg: 0,
@@ -59,7 +60,7 @@ var object = {
   line = {
     xy: 0,
     rgb: 0,
-    nb_point:0,
+    nb_line: 0,
     draw: 0,
     vbo_xy: 0,
     vbo_rgb: 0,
