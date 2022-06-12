@@ -11,7 +11,6 @@ function init_parameter(){
 
   //Parameters
   info.param.nb_point = 50;
-  info.param.nb_point = 50;
   info.param.nb_link = 3;
 
   info.param.speed = 0.001;

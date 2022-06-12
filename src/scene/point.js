@@ -62,6 +62,28 @@ function add_points_xy(xy){
 
   //-----------------------
 }
+function add_point_mouse(){
+  //-----------------------
+
+  [XY, RGB, Nxy] = create_points(1);
+
+  for(let i=0; i<XY.length; i++){
+    XY[i][0] = info.value.mouse[0] + getRandomArbitrary(-0.01, 0.01);
+    XY[i][1] = info.value.mouse[1] + getRandomArbitrary(-0.01, 0.01);
+  }
+
+  //Store data
+  object.point.xy = object.point.xy.concat(XY);
+  object.point.rgb = object.point.rgb.concat(RGB);
+  object.point.nxy = object.point.nxy.concat(Nxy);
+  object.point.nb_point = object.point.xy.length;
+  object.point.draw = gl.POINTS;
+
+  info.param.nb_point += 1;
+
+  //-----------------------
+  update_ui();
+}
 function create_points(nb_point){
   //-----------------------
 

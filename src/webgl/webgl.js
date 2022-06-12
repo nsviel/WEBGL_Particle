@@ -27,6 +27,7 @@ function init_context(){
   info.webgl.canvas = canvas;
 
   canvas.addEventListener("mousemove", event => get_mouse_pos(event, canvas));
+  canvas.addEventListener("click", event => add_point_mouse());
 
   //-----------------------
 }
