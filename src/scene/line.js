@@ -60,8 +60,9 @@ function runtime_compute_distance(i){
   return dist_vec;
 }
 function runtime_mouse(XY, RGB){
-  let rgb_mou = info.mouse.color;
-  let rgb_bkg = info.color.background;
+  let rgb_mou = convert_255_to_1(info.mouse.color);
+  let rgb_bkg = convert_255_to_1(info.color.bkg);
+  let rayon = info.mouse.rayon;
   //-----------------------
 
   //Mouse centered lines
@@ -70,7 +71,7 @@ function runtime_mouse(XY, RGB){
       dist = fct_distance(object.point.xy[i], info.mouse.xy)
 
       //If inside mouse circle
-      if(dist < 0.2){
+      if(dist < rayon){
         let dist_n = dist / 0.2;
         let r = dist_n * rgb_bkg[0] + (1 - dist_n) * rgb_mou[0]
         let g = dist_n * rgb_bkg[1] + (1 - dist_n) * rgb_mou[1]

@@ -22,5 +22,11 @@ function init_gui(){
   color.addColor(info.color, 'collision');
   color.addColor(info.color, 'bkg');
 
+  //Mouse
+  var mouse = info.webgl.gui.addFolder('Mouse');
+  mouse.add(info.mouse, 'rayon', 0, 0.5, 0.01);
+  mouse.add(info.mouse, 'add_point', false);
+  mouse.addColor(info.mouse, 'color');
+
   //-----------------------
 }

@@ -26,8 +26,6 @@ function init_context(){
 
   info.webgl.context = gl;
   info.webgl.canvas = canvas;
-  info.mouse.event = "none";
-
 
   //-----------------------
 }
@@ -46,9 +44,7 @@ function init_canvas_listener(){
   canvas.addEventListener("mouseover", event => set_mouse_over(true));
   canvas.addEventListener("mouseout", event => set_mouse_over(false));
   canvas.addEventListener("mousemove", event => get_mouse_pos(event, canvas));
-  if(info.mouse.event == "add"){
-    canvas.addEventListener("click", event => add_point_mouse());
-  }
+  canvas.addEventListener("click", event => add_point_mouse());
 
   //-----------------------
 }
