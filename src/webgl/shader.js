@@ -47,6 +47,9 @@ function init_params(){
 
   //-----------------------
 }
+function runtime_shader(){
+  gl.uniform1f(info.shader.uniform.point_size, info.param.point_size);
+}
 function create_shader(){
   //-----------------------
 

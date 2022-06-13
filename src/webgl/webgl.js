@@ -3,7 +3,8 @@ function init_wgl_context(){
   //-----------------------
 
   init_context();
-  init_resize_canvas(info.webgl.canvas)
+  init_canvas_listener();
+  init_canvas_size()
   init_viewport();
 
   //-----------------------
@@ -25,9 +26,8 @@ function init_context(){
 
   info.webgl.context = gl;
   info.webgl.canvas = canvas;
+  info.mouse.event = "none";
 
-  canvas.addEventListener("mousemove", event => get_mouse_pos(event, canvas));
-  canvas.addEventListener("click", event => add_point_mouse());
 
   //-----------------------
 }
@@ -39,7 +39,23 @@ function init_viewport(){
 
   //-----------------------
 }
-function init_resize_canvas(canvas){
+function init_canvas_listener(){
+  let canvas = info.webgl.canvas;
+  //-----------------------
+
+  canvas.addEventListener("mouseover", event => set_mouse_over(true));
+  canvas.addEventListener("mouseout", event => set_mouse_over(false));
+  canvas.addEventListener("mousemove", event => get_mouse_pos(event, canvas));
+  if(info.mouse.event == "add"){
+    canvas.addEventListener("click", event => add_point_mouse());
+  }
+
+  //-----------------------
+}
+function init_canvas_size(){
+  let canvas = info.webgl.canvas;
+  //-----------------------
+
   // Lookup the size the browser is displaying the canvas in CSS pixels.
   const displayWidth  = canvas.clientWidth;
   const displayHeight = canvas.clientHeight;
@@ -54,6 +70,7 @@ function init_resize_canvas(canvas){
     canvas.height = displayHeight;
   }
 
+  //-----------------------
   return needResize;
 }
 function get_webgl_info(){

@@ -3,6 +3,7 @@ var info = {
   webgl:{
     canvas: 0,
     context: 0,
+    gui: 0,
     mvp = {
       projection: 0,
       modelview: 0,
@@ -26,19 +27,20 @@ var info = {
     speed: 0,
     line_dist_max: 0,
     limit: 0,
-    mouse_area: 0,
     collision_area: 0,
     limitless: false,
   },
   color:{
-    bkg: 0,
     dark_mode: false,
-    primitiv_rgb: 0,
-    mouse_rgb: 0,
-    collision_rgb: 0,
+    collision: 0,
+    bkg: 0,
   },
-  value:{
-    mouse: 0,
+  mouse:{
+    area: 0,
+    event: 0,
+    over: false,
+    pos: 0,
+    color: 0,
   },
 };
 
@@ -49,6 +51,7 @@ var object = {
     rgb: 0,
     nxy: 0,
 
+    color: 0,
     size: 0,
     draw: 0,
     idx_anar: 0,
@@ -60,8 +63,11 @@ var object = {
   line = {
     xy: 0,
     rgb: 0,
+
+    color: 0,
     nb_line: 0,
     draw: 0,
+
     vbo_xy: 0,
     vbo_rgb: 0,
   },

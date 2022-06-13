@@ -14,13 +14,10 @@ video{
 	width: 1000px;
 	height: 500px;
 }
-#entro_title{
+#title{
   text-align: center;
   pointer-events: none;
   color: black;
-}
-#webgl_header{
-  pointer-events: auto;
 }
 .sliders{
   width: 150px;

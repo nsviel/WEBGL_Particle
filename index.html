@@ -6,51 +6,14 @@
 
     <link rel="stylesheet" href="./style.css" type="text/css">
     <script src="src/build/gl-matrix-min.js"></script>
-    <script src="src/build/particle.js" defer></script>
+    <script src="src/build/dat.gui.min.js"></script>
+    <script src="src/build/particle.js" async defer></script>
   </head>
 
   <body>
 
 
-    <div id="webgl_header">
-      <table>
-        <tr>
-          <!-- Slider nb points -->
-          <td>  <input type="range" id="point_manage_quantity" min="0" max="500" step="1" class="sliders"> </td>
-          <td>  <input type="text"  id="cpt_points" class="compteurs"> </td>
-          <td>  <span> Number of points </span> </td>
-
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-
-          <td>  <input type="range" id="slider_line_dist_max" min="0" max="1" step="0.01" class="sliders"> </td>
-          <td>  <input type="text"  id="cpt_line_dist_max" class="compteurs"> </td>
-          <td>  <span> Line dist max </span> </td>
-        </tr>
-        <tr>
-          <!-- Slider nb links -->
-          <td>  <input type="range" id="slider_size" min="1" max="20" step="1" class="sliders"> </td>
-          <td>  <input type="text"  id="cpt_size" class="compteurs"> </td>
-          <td>  <span> Point size </span> </td>
-
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-
-          <td>  <input type="checkbox" id="checkbox_dm"> </td>
-          <td>  <span> Dark mode </span> </td>
-        </tr>
-        <tr>
-          <!-- Slider speed -->
-          <td>  <input type="range" id="slider_speed" min="0" max="0.01" step="0.0001" class="sliders"> </td>
-          <td>  <input type="text"  id="cpt_speed" class="compteurs"> </td>
-          <td>  <span> Speed </span> </td>
-
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-
-          <td>  <input type="checkbox" id="limitless"> </td>
-          <td>  <span> Limitless </span> </td>
-        </tr>
-      </table>
-
-      <!-- Webgl canvas -->
+    <div id="webgl">
       <canvas id="glcanvas"></canvas>
     </div>
 

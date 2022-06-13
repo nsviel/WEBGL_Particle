@@ -2,20 +2,26 @@
 function init_points(nb_point){
   //-----------------------
 
-  [XY, RGB, Nxy] = create_points(nb_point);
-
-  //Store data
-  object.point.xy = XY;
-  object.point.rgb = RGB;
-  object.point.nxy = Nxy;
+  //Point parameters
   object.point.nb_point = nb_point;
   object.point.size = 1;
   object.point.draw = gl.POINTS;
+  object.point.color = [0, 0, 0, 1];
+
+  //Create points
+  [XY, RGB, Nxy] = create_points(nb_point);
+
+  //Point data
+  object.point.xy = XY;
+  object.point.rgb = RGB;
+  object.point.nxy = Nxy;
 
   //-----------------------
 }
 function runtime_point(){
   //-----------------------
+
+  point_manage_quantity();
 
   for(let i=0; i<object.point.xy.length; i++){
     let point = object.point.xy[i];
@@ -68,8 +74,8 @@ function add_point_mouse(){
   [XY, RGB, Nxy] = create_points(1);
 
   for(let i=0; i<XY.length; i++){
-    XY[i][0] = info.value.mouse[0] + getRandomArbitrary(-0.01, 0.01);
-    XY[i][1] = info.value.mouse[1] + getRandomArbitrary(-0.01, 0.01);
+    XY[i][0] = info.mouse.xy[0] + getRandomArbitrary(-0.01, 0.01);
+    XY[i][1] = info.mouse.xy[1] + getRandomArbitrary(-0.01, 0.01);
   }
 
   //Store data
@@ -85,11 +91,10 @@ function add_point_mouse(){
   update_ui();
 }
 function create_points(nb_point){
-  //-----------------------
-
   let lim_x = info.param.limit_inner_x;
   let lim_y = info.param.limit_inner_y;
-  let rgb = info.color.rgb_obj;
+  let rgb = convert_255_to_1(object.point.color);
+  //-----------------------
 
   //Location
   let XY = [];
@@ -121,7 +126,7 @@ function create_points_bordure(){
 
   //Location
   let X, Y;
-  let rgb = get_value(info.color.rgb_obj);
+  let rgb = get_value(object.point.color);
   let topright = randomDigit(0, 1);
   if(topright == 0){
     X = getRandomArbitrary(info.param.limit_outer_x[0], info.param.limit_outer_x[1]);
@@ -148,7 +153,7 @@ function remove_point(nb_point){
   //-----------------------
 
   //Location
-  for(let i=0; i<nb_point; i++){
+  for(let i=0; i<nb_point; i++){say("pop")
     object.point.xy.pop();
     object.point.nxy.pop();
     object.point.rgb.pop();
@@ -179,7 +184,7 @@ function remove_point_bordure(point){
 
 //Action functions
 function point_recolorization(i){
-  let rgb_obj = info.color.rgb_obj;
+  let rgb_obj = convert_255_to_1(object.point.color);
   let rgb_pt = object.point.rgb[i];
   let rgb_rate = 0.025;
   //-----------------------
@@ -200,7 +205,7 @@ function point_recolorization(i){
 }
 function point_collision(dist, i){
   let collid_thres = info.param.collision_area;
-  let collid_rgb = get_value(info.color.rgb_collid);
+  let collid_rgb = convert_255_to_1(info.color.collision);
   //-----------------------
 
   //point_collision action
@@ -213,29 +218,29 @@ function point_collision(dist, i){
   //-----------------------
 }
 function point_manage_quantity(){
-  let nb_slider = info.param.nb_point;
-  let diff = object.point.nb_point - nb_slider;
+  let query_number = info.param.nb_point;
+  let diff = query_number - object.point.nb_point;
   //-----------------------
 
-  if(diff > 0){
-    remove_point(diff);
-  }else if(diff < 0){
-    add_points(-diff);
+  if(diff < 0){
+    remove_point(Math.abs(diff));
+  }else if(diff > 0){
+    add_points(Math.abs(diff));
   }
 
   //-----------------------
 }
 function point_displacment(point, normal, i){
-  let mouse_xy = info.value.mouse;
-  let mouse_area = info.param.mouse_area;
-  let rgb_mo = get_value(info.color.rgb_mouse);
+  let mouse_xy = info.mouse.xy;
+  let mouse_area = info.mouse.area;
+  let rgb_mo = get_value(info.mouse.color);
   //-----------------------
 
   //Compute distance
   dist = fct_distance(point, mouse_xy)
 
   //If inside mouse circle
-  if(dist < mouse_area){
+  if(dist < mouse_area && info.mouse.over){
     //Repulsif displacment
     point[0] += (0.2 - dist) * (point[0] - mouse_xy[0]) * 0.2 + normal[0] * 0.001;
     point[1] += (0.2 - dist) * (point[1] - mouse_xy[1]) * 0.2 + normal[1] * 0.001;

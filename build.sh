@@ -15,7 +15,7 @@ cd src
 cat \
 specific/utility.js \
 specific/struct.js \
-specific/ui.js \
+specific/gui.js \
 specific/entropy.js \
 specific/anarpoint.js \
 \

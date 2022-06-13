@@ -3,13 +3,9 @@ function loop(){
   let gl = info.webgl.context;
   //-----------------------
 
-  //Init
-  init_object();
-  init_scene();
-
   //main loop
   function render(){
-    let rgb = info.color.rgb_bkg;
+    let rgb = convert_255_to_1(info.color.bkg);
     gl.clearColor(rgb[0], rgb[1], rgb[2], rgb[3]);
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -28,7 +24,7 @@ function draw_scene(){
   //-----------------------
 
   //Runtime functions
-  runtime_ui();
+  runtime_shader();
   runtime_point();
   runtime_line();
 
