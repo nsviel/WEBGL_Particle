@@ -89,8 +89,8 @@ function runtime_mouse(XY, RGB){
   //-----------------------
 }
 function create_line_all(XY, RGB, dist_vec, i){
-  let rgb_obj = object.line.color;
-  let rgb_bkg = info.color.background;
+  let rgb_obj = convert_255_to_1(object.point.color);
+  let rgb_bkg = convert_255_to_1(info.color.bkg);
   //-----------------------
 
   for(let j=0; j<dist_vec.length; j++){
