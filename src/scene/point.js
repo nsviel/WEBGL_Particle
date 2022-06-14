@@ -276,7 +276,7 @@ function point_displacment(point, normal, speed, i){
     normal[1] = N[1] / norm;
 
     //Repulsif displacment
-    point[0] += (mouse_area - dist) * (point[0] - mouse_xy[0]) * mouse_area  + normal[0] * speed * info.param.speed;
+    point[0] += (mouse_area - dist) * (point[0] - mouse_xy[0]) * mouse_area + normal[0] * speed * info.param.speed;
     point[1] += (mouse_area - dist) * (point[1] - mouse_xy[1]) * mouse_area + normal[1] * speed * info.param.speed;
   }
   //Default displacment
