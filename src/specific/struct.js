@@ -50,6 +50,7 @@ var object = {
     xy: 0,
     rgb: 0,
     nxy: 0,
+    speed: 0,
 
     color: 0,
     size: 0,

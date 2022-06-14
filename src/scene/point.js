@@ -9,12 +9,13 @@ function init_points(nb_point){
   object.point.color = [0, 0, 0, 1];
 
   //Create points
-  [XY, RGB, Nxy] = create_points(nb_point);
+  [XY, RGB, Nxy, Sp] = create_points(nb_point);
 
   //Point data
   object.point.xy = XY;
   object.point.rgb = RGB;
   object.point.nxy = Nxy;
+  object.point.speed = Sp;
 
   //-----------------------
 }
@@ -26,9 +27,10 @@ function runtime_point(){
   for(let i=0; i<object.point.xy.length; i++){
     let point = object.point.xy[i];
     let normal = object.point.nxy[i];
+    let speed = object.point.speed[i];
 
     point_anarchiste(point, normal);
-    point_displacment(point, normal, i);
+    point_displacment(point, normal, speed, i);
     point_manage_limit(point, normal);
     point_recolorization(i);
   }
@@ -40,12 +42,15 @@ function runtime_point(){
 function add_points(nb_point){
   //-----------------------
 
-  [XY, RGB, Nxy] = create_points(nb_point);
+  [XY, RGB, Nxy, Sp] = create_points(nb_point);
 
   //Store data
   object.point.xy = object.point.xy.concat(XY);
   object.point.rgb = object.point.rgb.concat(RGB);
   object.point.nxy = object.point.nxy.concat(Nxy);
+  object.point.speed = object.point.speed.concat(Sp);
+
+  //Main info
   object.point.nb_point = object.point.xy.length;
   object.point.draw = gl.POINTS;
 
@@ -54,7 +59,7 @@ function add_points(nb_point){
 function add_points_xy(xy){
   //-----------------------
 
-  [XY, RGB, Nxy] = create_points(1);
+  [XY, RGB, Nxy, Sp] = create_points(1);
   XY[0][0] += xy[0] + Nxy[0][0] * 0.001;
   XY[0][1] += xy[1] + Nxy[0][1] * 0.001;
   RGB[0] = [0,0,1,1];
@@ -63,6 +68,9 @@ function add_points_xy(xy){
   object.point.xy = object.point.xy.concat(XY);
   object.point.rgb = object.point.rgb.concat(RGB);
   object.point.nxy = object.point.nxy.concat(Nxy);
+  object.point.speed = object.point.nxy.concat(Sp);
+
+  //Main info
   object.point.nb_point = object.point.xy.length;
   object.point.draw = gl.POINTS;
 
@@ -72,7 +80,7 @@ function add_point_mouse(){
   //-----------------------
 
   if(info.mouse.add_point){
-    [XY, RGB, Nxy] = create_points(1);
+    [XY, RGB, Nxy, Sp] = create_points(1);
 
     for(let i=0; i<XY.length; i++){
       XY[i][0] = info.mouse.xy[0] + getRandomArbitrary(-0.01, 0.01);
@@ -83,9 +91,11 @@ function add_point_mouse(){
     object.point.xy = object.point.xy.concat(XY);
     object.point.rgb = object.point.rgb.concat(RGB);
     object.point.nxy = object.point.nxy.concat(Nxy);
+    object.point.speed = object.point.nxy.concat(Sp);
+
+    //Main info
     object.point.nb_point = object.point.xy.length;
     object.point.draw = gl.POINTS;
-
     info.param.nb_point += 1;
   }
 
@@ -116,11 +126,19 @@ function create_points(nb_point){
   for(let i=0; i<nb_point; i++){
     let Nx = getRandomArbitrary(-1, 1);
     let Ny = getRandomArbitrary(-1, 1);
-    Nxy.push([Nx, Ny]);
+    let norm = Math.sqrt(Math.pow(Nx, 2) + Math.pow(Ny, 2));
+    Nxy.push([Nx / norm, Ny / norm]);
+  }
+
+  //Speed
+  let Sp = [];
+  for(let i=0; i<nb_point; i++){
+    let S = getRandomArbitrary(0.1, 1);
+    Sp.push(S);
   }
 
   //-----------------------
-  return [XY, RGB, Nxy];
+  return [XY, RGB, Nxy, Sp];
 }
 function create_points_bordure(){
   //-----------------------
@@ -136,8 +154,6 @@ function create_points_bordure(){
     X = randomDigit(info.param.limit_outer_x[0], info.param.limit_outer_x[1]);
     Y = getRandomArbitrary(info.param.limit_outer_y[0], info.param.limit_outer_y[1]);
   }
-
-  say([X, Y])
   object.point.xy.push([X, Y]);
 
   //Color
@@ -146,7 +162,12 @@ function create_points_bordure(){
   //Normal
   let Nx = getRandomArbitrary(-1, 1);
   let Ny = getRandomArbitrary(-1, 1);
-  object.point.nxy.push([Nx, Ny]);
+  let norm = Math.sqrt(Math.pow(Nx, 2) + Math.pow(Ny, 2));
+  object.point.nxy.push([Nx / norm, Ny / norm]);
+
+  //Speed
+  let S = getRandomArbitrary(0.1, 1);
+  object.point.speed.push(S);
 
   //-----------------------
 }
@@ -154,7 +175,7 @@ function remove_point(nb_point){
   //-----------------------
 
   //Location
-  for(let i=0; i<nb_point; i++){say("pop")
+  for(let i=0; i<nb_point; i++){
     object.point.xy.pop();
     object.point.nxy.pop();
     object.point.rgb.pop();
@@ -212,8 +233,9 @@ function point_collision(dist, i){
   //point_collision action
   let Nx = getRandomArbitrary(-1, 1);
   let Ny = getRandomArbitrary(-1, 1);
+  let norm = Math.sqrt(Math.pow(Nx, 2) + Math.pow(Ny, 2));
 
-  object.point.nxy[i] = [Nx, Ny];
+  object.point.nxy[i] = [Nx / norm, Ny / norm];
   object.point.rgb[i] = collid_rgb;
 
   //-----------------------
@@ -231,7 +253,7 @@ function point_manage_quantity(){
 
   //-----------------------
 }
-function point_displacment(point, normal, i){
+function point_displacment(point, normal, speed, i){
   let mouse_xy = info.mouse.xy;
   let mouse_area = info.mouse.rayon;
   let rgb_mo = convert_255_to_1(info.mouse.color);
@@ -242,17 +264,25 @@ function point_displacment(point, normal, i){
 
   //If inside mouse circle
   if(dist < mouse_area && info.mouse.over){
-    //Repulsif displacment
-    point[0] += (0.2 - dist) * (point[0] - mouse_xy[0]) * 0.2 + normal[0] * 0.001;
-    point[1] += (0.2 - dist) * (point[1] - mouse_xy[1]) * 0.2 + normal[1] * 0.001;
-
     //Color
     object.point.rgb[i] = rgb_mo;
+
+    //Normal
+    let N = [];
+    N[0] = (point[0] - mouse_xy[0])
+    N[1] = (point[1] - mouse_xy[1])
+    let norm = Math.sqrt(Math.pow(N[0], 2) + Math.pow(N[1], 2));
+    normal[0] = N[0] / norm;
+    normal[1] = N[1] / norm;
+
+    //Repulsif displacment
+    point[0] += (mouse_area - dist) * (point[0] - mouse_xy[0]) * mouse_area  + normal[0] * speed * info.param.speed;
+    point[1] += (mouse_area - dist) * (point[1] - mouse_xy[1]) * mouse_area + normal[1] * speed * info.param.speed;
   }
   //Default displacment
   else{
-    point[0] += normal[0] * info.param.speed;
-    point[1] += normal[1] * info.param.speed;
+    point[0] += normal[0] * speed * info.param.speed;
+    point[1] += normal[1] * speed * info.param.speed;
   }
 
   //-----------------------

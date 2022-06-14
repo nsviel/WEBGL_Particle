@@ -16,7 +16,6 @@ function init_configuration(){
   info.param.limit_outer_y = [-1.5, 1.5];
 
   //Colors
-  info.color.dark_mode = false;
   info.color.bkg = [255, 255, 255, 1];
   info.color.collision = [255, 0, 0, 1];
 
