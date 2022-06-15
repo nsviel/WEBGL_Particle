@@ -43,6 +43,7 @@ var info = {
     color: 0,
     add_point_number: 0,
     add_point: false,
+    repusif: 0,
   },
 };
 

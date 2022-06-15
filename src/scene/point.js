@@ -104,7 +104,7 @@ function create_points(nb_point){
   let lim_y = info.param.limit_inner_y;
   let rgb = convert_255_to_1(object.point.color);
   //-----------------------
-say(nb_point)
+
   //Location
   let XY = [];
   for(let i=0; i<nb_point; i++){
@@ -266,16 +266,29 @@ function point_displacment(point, normal, speed, i){
     object.point.rgb[i] = rgb_mo;
 
     //Normal
-    let N = [];
-    N[0] = (point[0] - mouse_xy[0])
-    N[1] = (point[1] - mouse_xy[1])
-    let norm = Math.sqrt(Math.pow(N[0], 2) + Math.pow(N[1], 2));
-    normal[0] = N[0] / norm;
-    normal[1] = N[1] / norm;
+    let vec_n = [];
+    let vec_p = [];
+    for(let i=0; i<2; i++){
+      vec_n[i] = normal[i] - point[i];
+      vec_p[i] = point[i] - mouse_xy[i];
+    }
+    let theta_d = Math.atan2(vec_n[1], vec_n[0]) - Math.atan2(vec_p[1], vec_p[0]) 
+
+    let Nx = normal[0] * Math.cos(theta_d/100) - normal[1] * Math.sin(theta_d/100);
+    let Ny = normal[0] * Math.sin(theta_d/100) + normal[1] * Math.cos(theta_d/100);
+
+    let norm = Math.sqrt(Math.pow(Nx, 2) + Math.pow(Ny, 2));
+    normal[0] = Nx / norm;
+    normal[1] = Ny / norm;
 
     //Repulsif displacment
-    point[0] += (mouse_area - dist) * (point[0] - mouse_xy[0]) * mouse_area + normal[0] * speed * info.param.speed;
-    point[1] += (mouse_area - dist) * (point[1] - mouse_xy[1]) * mouse_area + normal[1] * speed * info.param.speed;
+    for(let i=0; i<2; i++){
+      let force_repusif = (mouse_area - dist) * info.mouse.repusif;
+      let force_normal = normal[i] * speed * info.param.speed ;
+      let vec_mouse_point = point[i] - mouse_xy[i];
+      point[i] += force_repusif * vec_mouse_point + force_normal;
+      point[i] += force_repusif * vec_mouse_point + force_normal;
+    }
   }
   //Default displacment
   else{
