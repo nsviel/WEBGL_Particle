@@ -12,7 +12,7 @@ function init_gui(){
 
   //Points
   var point = info.webgl.gui.addFolder('Point');
-  point.add(info.param, 'nb_point', 0, 500, 1);
+  point.add(info.param, 'nb_point', 0, info.param.nb_point_max, 1).listen();
   point.add(info.param, 'point_size', 0, 20, 1);
   point.add(info.param, 'speed', 0, 0.1, 0.0001);
   point.addColor(object.point, 'color');
@@ -26,6 +26,7 @@ function init_gui(){
   var mouse = info.webgl.gui.addFolder('Mouse');
   mouse.add(info.mouse, 'rayon', 0, 0.5, 0.01);
   mouse.add(info.mouse, 'add_point', false);
+  mouse.add(info.mouse, 'add_point_number', 1, 20, 1);
   mouse.addColor(info.mouse, 'color');
 
   //-----------------------

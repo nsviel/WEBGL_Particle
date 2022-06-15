@@ -96,7 +96,7 @@ function draw_object(data){
   gl.enableVertexAttribArray(info.shader.attribut.color);
 
   //Draw
-  gl.drawArrays(data.draw, 0, data.xy.length);
+  gl.drawArrays(data.draw_type, 0, data.xy.length);
 
   //-----------------------
 }

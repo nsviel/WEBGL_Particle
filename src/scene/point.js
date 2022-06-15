@@ -5,7 +5,7 @@ function init_points(nb_point){
   //Point parameters
   object.point.nb_point = nb_point;
   object.point.size = 1;
-  object.point.draw = gl.POINTS;
+  object.point.draw_type = gl.POINTS;
   object.point.color = [0, 0, 0, 1];
 
   //Create points
@@ -52,7 +52,6 @@ function add_points(nb_point){
 
   //Main info
   object.point.nb_point = object.point.xy.length;
-  object.point.draw = gl.POINTS;
 
   //-----------------------
 }
@@ -72,15 +71,15 @@ function add_points_xy(xy){
 
   //Main info
   object.point.nb_point = object.point.xy.length;
-  object.point.draw = gl.POINTS;
 
   //-----------------------
 }
 function add_point_mouse(){
   //-----------------------
 
-  if(info.mouse.add_point){
-    [XY, RGB, Nxy, Sp] = create_points(1);
+  if(info.mouse.add_point && object.point.nb_point < info.param.nb_point_max){
+    let nb_point = info.mouse.add_point_number;
+    [XY, RGB, Nxy, Sp] = create_points(nb_point);
 
     for(let i=0; i<XY.length; i++){
       XY[i][0] = info.mouse.xy[0] + getRandomArbitrary(-0.01, 0.01);
@@ -91,12 +90,11 @@ function add_point_mouse(){
     object.point.xy = object.point.xy.concat(XY);
     object.point.rgb = object.point.rgb.concat(RGB);
     object.point.nxy = object.point.nxy.concat(Nxy);
-    object.point.speed = object.point.nxy.concat(Sp);
+    object.point.speed = object.point.speed.concat(Sp);
 
     //Main info
     object.point.nb_point = object.point.xy.length;
-    object.point.draw = gl.POINTS;
-    info.param.nb_point += 1;
+    info.param.nb_point += XY.length;
   }
 
   //-----------------------
@@ -106,7 +104,7 @@ function create_points(nb_point){
   let lim_y = info.param.limit_inner_y;
   let rgb = convert_255_to_1(object.point.color);
   //-----------------------
-
+say(nb_point)
   //Location
   let XY = [];
   for(let i=0; i<nb_point; i++){

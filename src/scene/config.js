@@ -3,6 +3,7 @@ function init_configuration(){
 
   //Parameters
   info.param.nb_point = 50;
+  info.param.nb_point_max = 200;
   info.param.speed = 0.001;
   info.param.point_size = 5;
   info.param.line_dist_max = 0.5;
@@ -22,6 +23,7 @@ function init_configuration(){
   //Mouse
   info.mouse.rayon = 0.2;
   info.mouse.add_point = false;
+  info.mouse.add_point_number = 1;
   info.mouse.over = false;
   info.mouse.xy = 0;
   info.mouse.color = [0, 125, 125, 1];

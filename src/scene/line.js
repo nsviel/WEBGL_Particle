@@ -2,7 +2,7 @@
 function init_line(){
   //-----------------------
 
-  object.line.draw = gl.LINES;
+  object.line.draw_type = gl.LINES;
   object.line.color = [0, 0, 0, 1];
 
   //-----------------------

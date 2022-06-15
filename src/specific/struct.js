@@ -24,6 +24,7 @@ var info = {
   },
   param:{
     nb_point: 0,
+    nb_point_max: 0,
     speed: 0,
     line_dist_max: 0,
     limit: 0,
@@ -36,11 +37,12 @@ var info = {
     bkg: 0,
   },
   mouse:{
-    area: 0,
-    event: 0,
+    rayon: 0,
     over: false,
-    pos: 0,
+    xy: 0,
     color: 0,
+    add_point_number: 0,
+    add_point: false,
   },
 };
 
@@ -54,7 +56,7 @@ var object = {
 
     color: 0,
     size: 0,
-    draw: 0,
+    draw_type: 0,
     idx_anar: 0,
     nb_point: 0,
 
@@ -67,7 +69,7 @@ var object = {
 
     color: 0,
     nb_line: 0,
-    draw: 0,
+    draw_type: 0,
 
     vbo_xy: 0,
     vbo_rgb: 0,
