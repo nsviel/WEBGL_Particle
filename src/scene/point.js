@@ -6,7 +6,6 @@ function init_points(nb_point){
   object.point.nb_point = nb_point;
   object.point.size = 1;
   object.point.draw_type = gl.POINTS;
-  object.point.color = [0, 0, 0, 1];
 
   //Create points
   [XY, RGB, Nxy, Sp] = create_points(nb_point);
@@ -25,13 +24,9 @@ function runtime_point(){
   point_manage_quantity();
 
   for(let i=0; i<object.point.xy.length; i++){
-    let point = object.point.xy[i];
-    let normal = object.point.nxy[i];
-    let speed = object.point.speed[i];
-
-    point_anarchiste(point, normal);
-    point_displacment(point, normal, speed, i);
-    point_manage_limit(point, normal);
+    point_anarchiste(i);
+    point_displacment(i);
+    point_manage_limit(i);
     point_recolorization(i);
   }
 
@@ -102,7 +97,7 @@ function add_point_mouse(){
 function create_points(nb_point){
   let lim_x = info.param.limit_inner_x;
   let lim_y = info.param.limit_inner_y;
-  let rgb = convert_255_to_1(object.point.color);
+  let rgb = convert_255_to_1(info.color.point);
   //-----------------------
 
   //Location
@@ -143,7 +138,7 @@ function create_points_bordure(){
 
   //Location
   let X, Y;
-  let rgb = get_value(object.point.color);
+  let rgb = get_value(info.color.point);
   let topright = randomDigit(0, 1);
   if(topright == 0){
     X = getRandomArbitrary(info.param.limit_outer_x[0], info.param.limit_outer_x[1]);
@@ -204,7 +199,7 @@ function remove_point_bordure(point){
 
 //Action functions
 function point_recolorization(i){
-  let rgb_obj = convert_255_to_1(object.point.color);
+  let rgb_obj = convert_255_to_1(info.color.point);
   let rgb_pt = object.point.rgb[i];
   let rgb_rate = 0.025;
   //-----------------------
@@ -251,10 +246,12 @@ function point_manage_quantity(){
 
   //-----------------------
 }
-function point_displacment(point, normal, speed, i){
+function point_displacment(i){
   let mouse_xy = info.mouse.xy;
   let mouse_area = info.mouse.rayon;
-  let rgb_mo = convert_255_to_1(info.mouse.color);
+  let point = object.point.xy[i];
+  let normal = object.point.nxy[i];
+  let speed = object.point.speed[i];
   //-----------------------
 
   //Compute distance
@@ -262,43 +259,104 @@ function point_displacment(point, normal, speed, i){
 
   //If inside mouse circle
   if(dist < mouse_area && info.mouse.over){
-    //Color
-    object.point.rgb[i] = rgb_mo;
-
-    //Normal
-    let vec_n = [];
-    let vec_p = [];
-    for(let i=0; i<2; i++){
-      vec_n[i] = normal[i] - point[i];
-      vec_p[i] = point[i] - mouse_xy[i];
+    if(info.mouse.mode == 'Repulsif'){
+      point_mouse_repulsif(i, dist)
     }
-    let theta_d = Math.atan2(vec_n[1], vec_n[0]) - Math.atan2(vec_p[1], vec_p[0]) 
-
-    let Nx = normal[0] * Math.cos(theta_d/100) - normal[1] * Math.sin(theta_d/100);
-    let Ny = normal[0] * Math.sin(theta_d/100) + normal[1] * Math.cos(theta_d/100);
-
-    let norm = Math.sqrt(Math.pow(Nx, 2) + Math.pow(Ny, 2));
-    normal[0] = Nx / norm;
-    normal[1] = Ny / norm;
-
-    //Repulsif displacment
-    for(let i=0; i<2; i++){
-      let force_repusif = (mouse_area - dist) * info.mouse.repusif;
-      let force_normal = normal[i] * speed * info.param.speed ;
-      let vec_mouse_point = point[i] - mouse_xy[i];
-      point[i] += force_repusif * vec_mouse_point + force_normal;
-      point[i] += force_repusif * vec_mouse_point + force_normal;
+    else if(info.mouse.mode == 'Black_hole'){
+      point_mouse_blackhole(i, dist)
     }
   }
   //Default displacment
   else{
+    let mouse_rgb = convert_255_to_1(info.color.mouse);
     point[0] += normal[0] * speed * info.param.speed;
     point[1] += normal[1] * speed * info.param.speed;
   }
 
   //-----------------------
 }
-function point_manage_limit(point, normal){
+function point_mouse_repulsif(i, dist){
+  let mouse_xy = info.mouse.xy;
+  let mouse_area = info.mouse.rayon;
+  let mouse_rgb = convert_255_to_1(info.color.mouse);
+  let point = object.point.xy[i];
+  let normal = object.point.nxy[i];
+  let speed = object.point.speed[i];
+  //-----------------------
+
+  //Color
+  object.point.rgb[i] = mouse_rgb;
+
+  //Normal
+  let vec_n = [];
+  let vec_p = [];
+  for(let i=0; i<2; i++){
+    vec_n[i] = normal[i] - point[i];
+    vec_p[i] = point[i] - mouse_xy[i];
+  }
+  let theta_d = Math.atan2(vec_n[1], vec_n[0]) - Math.atan2(vec_p[1], vec_p[0])
+
+  let Nx = normal[0] * Math.cos(theta_d/100) - normal[1] * Math.sin(theta_d/100);
+  let Ny = normal[0] * Math.sin(theta_d/100) + normal[1] * Math.cos(theta_d/100);
+
+  let norm = Math.sqrt(Math.pow(Nx, 2) + Math.pow(Ny, 2));
+  normal[0] = Nx / norm;
+  normal[1] = Ny / norm;
+
+  //Repulsif displacment
+  for(let i=0; i<2; i++){
+    let force_repusif = (mouse_area - dist) * info.mouse.repusif;
+    let force_normal = normal[i] * speed * info.param.speed ;
+    let vec_mouse_point = point[i] - mouse_xy[i];
+    point[i] += force_repusif * vec_mouse_point + force_normal;
+    point[i] += force_repusif * vec_mouse_point + force_normal;
+  }
+
+  //-----------------------
+}
+function point_mouse_blackhole(i, dist){
+  let mouse_xy = info.mouse.xy;
+  let mouse_area = info.mouse.rayon;
+  let mouse_rgb = convert_255_to_1(info.color.mouse);
+  let point = object.point.xy[i];
+  let normal = object.point.nxy[i];
+  let color = object.point.rgb[i];
+  let speed = object.point.speed[i];
+  //-----------------------
+
+  //Color
+  object.point.rgb[i] = mouse_rgb;
+
+  //Normal
+  let vec_n = [];
+  let vec_p = [];
+  for(let i=0; i<2; i++){
+    vec_n[i] = normal[i] - point[i];
+    vec_p[i] = mouse_xy[i] - point[i];
+  }
+  let theta_d = Math.atan2(vec_n[1], vec_n[0]) - Math.atan2(vec_p[1], vec_p[0])
+
+  let Nx = normal[0] * Math.cos(theta_d/100) - normal[1] * Math.sin(theta_d/100);
+  let Ny = normal[0] * Math.sin(theta_d/100) + normal[1] * Math.cos(theta_d/100);
+
+  let norm = Math.sqrt(Math.pow(Nx, 2) + Math.pow(Ny, 2));
+  normal[0] = Nx / norm;
+  normal[1] = Ny / norm;
+
+  //Repulsif displacment
+  for(let i=0; i<2; i++){
+    let force_attractif = (dist) * info.mouse.repusif;
+    let force_normal = normal[i] * speed * info.param.speed ;
+    let vec_mouse_point = mouse_xy[i] - point[i];
+    point[i] += force_attractif * vec_mouse_point + force_normal;
+    point[i] += force_attractif * vec_mouse_point + force_normal;
+  }
+
+  //-----------------------
+}
+function point_manage_limit(i){
+  let point = object.point.xy[i];
+  let normal = object.point.nxy[i];
   //-----------------------
 
   //Area borders
@@ -325,7 +383,9 @@ function point_manage_limit(point, normal){
 
   //-----------------------
 }
-function point_anarchiste(point, normal){
+function point_anarchiste(i){
+  let point = object.point.xy[i];
+  let normal = object.point.nxy[i];
   //-----------------------
 
 

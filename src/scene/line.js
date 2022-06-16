@@ -3,7 +3,6 @@ function init_line(){
   //-----------------------
 
   object.line.draw_type = gl.LINES;
-  object.line.color = [0, 0, 0, 1];
 
   //-----------------------
 }
@@ -60,7 +59,7 @@ function runtime_compute_distance(i){
   return dist_vec;
 }
 function runtime_mouse(XY, RGB){
-  let rgb_mou = convert_255_to_1(info.mouse.color);
+  let rgb_mou = convert_255_to_1(info.color.mouse);
   let rgb_bkg = convert_255_to_1(info.color.bkg);
   let mouse_area = info.mouse.rayon;
   //-----------------------
@@ -90,7 +89,7 @@ function runtime_mouse(XY, RGB){
   //-----------------------
 }
 function create_line_all(XY, RGB, dist_vec, i){
-  let rgb_obj = convert_255_to_1(object.point.color);
+  let rgb_obj = convert_255_to_1(info.color.line);
   let rgb_bkg = convert_255_to_1(info.color.bkg);
   //-----------------------
 

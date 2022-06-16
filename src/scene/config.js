@@ -19,15 +19,18 @@ function init_configuration(){
   //Colors
   info.color.bkg = [255, 255, 255, 1];
   info.color.collision = [255, 0, 0, 1];
+  info.color.mouse = [0, 125, 125, 1];
+  info.color.point = [0, 0, 0, 1];
+  info.color.line = [0, 0, 0, 1];
 
   //Mouse
+  info.mouse.mode = 'Repulsif';
   info.mouse.rayon = 0.2;
   info.mouse.add_point = false;
   info.mouse.add_point_number = 1;
   info.mouse.over = false;
   info.mouse.xy = 0;
   info.mouse.repusif = 0.2;
-  info.mouse.color = [0, 125, 125, 1];
 
   //-----------------------
 }
