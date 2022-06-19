@@ -8,13 +8,8 @@ function init_configuration(){
   info.param.point_size = 5;
   info.param.line_dist_max = 200;
   info.param.collision_area = 5;
-
-  //limits
-  info.param.limitless = false;
-  info.param.limit_inner_x = [-1, 1];
-  info.param.limit_inner_y = [-1, 1];
-  info.param.limit_outer_x = [-1.5, 1.5];
-  info.param.limit_outer_y = [-1.5, 1.5];
+  info.param.limit_x = 1;
+  info.param.limit_y = 1;
 
   //Colors
   info.color.bkg = [255, 255, 255, 1];

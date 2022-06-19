@@ -95,16 +95,16 @@ function add_point_mouse(){
   //-----------------------
 }
 function create_points(nb_point){
-  let lim_x = info.param.limit_inner_x;
-  let lim_y = info.param.limit_inner_y;
+  let lim_x = info.param.limit_x;
+  let lim_y = info.param.limit_y;
   let rgb = convert_255_to_1(info.color.point);
   //-----------------------
 
   //Location
   let XY = [];
   for(let i=0; i<nb_point; i++){
-    let X = getRandomArbitrary(lim_x[0], lim_x[1]);
-    let Y = getRandomArbitrary(lim_y[0], lim_y[1]);
+    let X = getRandomArbitrary(-lim_x, lim_x);
+    let Y = getRandomArbitrary(-lim_y, lim_y);
     XY.push([X, Y]);
   }
 
@@ -141,11 +141,11 @@ function create_points_bordure(){
   let rgb = get_value(info.color.point);
   let topright = randomDigit(0, 1);
   if(topright == 0){
-    X = getRandomArbitrary(info.param.limit_outer_x[0], info.param.limit_outer_x[1]);
-    Y = randomDigit(info.param.limit_outer_y[0], info.param.limit_outer_y[1]);
+    X = getRandomArbitrary(-1.5, 1.5);
+    Y = randomDigit(-1.5, 1.5);
   }else if(topright == 1){
-    X = randomDigit(info.param.limit_outer_x[0], info.param.limit_outer_x[1]);
-    Y = getRandomArbitrary(info.param.limit_outer_y[0], info.param.limit_outer_y[1]);
+    X = randomDigit(-1.5, 1.5);
+    Y = getRandomArbitrary(-1.5, 1.5);
   }
   object.point.xy.push([X, Y]);
 
@@ -181,8 +181,7 @@ function remove_point(nb_point){
 function remove_point_bordure(point){
   //-----------------------
 
-  if(point[0] < info.param.limit_outer_x[0] || point[0] > info.param.limit_outer_x[1] ||
-    point[1] < info.param.limit_outer_y[0] || point[1] > info.param.limit_outer_y[1]){
+  if(point[0] < -1.5 || point[0] > 1.5 || point[1] < -1.5 || point[1] > 1.5){
     //Supress point at the border
     let idx = object.point.xy.indexOf(point);
     object.point.xy.splice(idx, 1);
@@ -191,7 +190,7 @@ function remove_point_bordure(point){
     object.point.nb_point = object.point.xy.length;
 
     //Create new point
-    create_points_bordure();
+    //create_points_bordure();
   }
 
   //-----------------------
@@ -258,7 +257,7 @@ function point_displacment(i){
   dist = fct_distance_cartesian(point, mouse_xy)
 
   //If inside mouse circle
-  if(dist < mouse_area && info.mouse.over){say("hello")
+  if(dist < mouse_area && info.mouse.over){
     if(info.mouse.mode == 'Repulsif'){
       point_mouse_repulsif(i, dist)
     }
@@ -281,25 +280,21 @@ function point_manage_limit(i){
   //-----------------------
 
   //Area borders
-  if(info.param.limitless){
-    remove_point_bordure(point);
-  }else{
-    if(point[0] < info.param.limit_inner_x[0]){
-      point[0] = info.param.limit_inner_x[0];
-      normal[0] = -normal[0];
-    }
-    if(point[0] > info.param.limit_inner_x[1]){
-      point[0] = info.param.limit_inner_x[1];
-      normal[0] = -normal[0];
-    }
-    if(point[1] < info.param.limit_inner_y[0]){
-      point[1] = info.param.limit_inner_y[0];
-      normal[1] = -normal[1];
-    }
-    if(point[1] > info.param.limit_inner_y[1]){
-      point[1] = info.param.limit_inner_y[1];
-      normal[1] = -normal[1];
-    }
+  if(point[0] < -info.param.limit_x){
+    point[0] = -info.param.limit_x;
+    normal[0] = -normal[0];
+  }
+  if(point[0] > info.param.limit_x){
+    point[0] = info.param.limit_x;
+    normal[0] = -normal[0];
+  }
+  if(point[1] < -info.param.limit_y){
+    point[1] = -info.param.limit_y;
+    normal[1] = -normal[1];
+  }
+  if(point[1] > info.param.limit_y){
+    point[1] = info.param.limit_y;
+    normal[1] = -normal[1];
   }
 
   //-----------------------

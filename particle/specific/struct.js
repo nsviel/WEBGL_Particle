@@ -27,9 +27,9 @@ var info = {
     nb_point_max: 0,
     speed: 0,
     line_dist_max: 0,
-    limit: 0,
+    limit_x: 0,
+    limit_y: 0,
     collision_area: 0,
-    limitless: false,
   },
   color:{
     dark_mode: false,
