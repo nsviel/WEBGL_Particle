@@ -30,6 +30,7 @@ function init_gui(){
   mouse.add(info.mouse, 'rayon', 0, 0.5, 0.01);
   mouse.add(info.mouse, 'add_point', false);
   mouse.add(info.mouse, 'add_point_number', 1, 20, 1);
+  mouse.add(info.mouse, 'force', 0, 1, 0.01);
 
   //-----------------------
 }

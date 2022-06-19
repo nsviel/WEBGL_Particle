@@ -16,6 +16,18 @@ function fct_distance(pt_1, pt_2){
   //-----------------------
   return dist;
 }
+function fct_distance_ratio(pt_1, pt_2){
+  let canvas = info.webgl.canvas;
+  //-----------------------
+
+  let pt_1_xy = [pt_1[0] * canvas.height, pt_1[1] * canvas.width];
+  let pt_2_xy = [pt_2[0] * canvas.height, pt_2[1] * canvas.width];
+
+  let dist = Math.sqrt(Math.pow(pt_1_xy[0] - pt_2_xy[0], 2) + Math.pow(pt_1_xy[1] - pt_2_xy[1], 2));
+
+  //-----------------------
+  return dist;
+}
 function create_matrix(m, n){
   //-----------------------
 

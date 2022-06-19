@@ -4,8 +4,8 @@ function init_wgl_context(){
 
   init_context();
   init_canvas_listener();
-  init_canvas_size()
-  init_viewport();
+  compute_canvas_size()
+  compute_viewport();
 
   //-----------------------
 }
@@ -29,14 +29,6 @@ function init_context(){
 
   //-----------------------
 }
-function init_viewport(){
-  gl = info.webgl.context;
-  //-----------------------
-
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-
-  //-----------------------
-}
 function init_canvas_listener(){
   let canvas = info.webgl.canvas;
   //-----------------------
@@ -47,27 +39,6 @@ function init_canvas_listener(){
   canvas.addEventListener("click", event => add_point_mouse());
 
   //-----------------------
-}
-function init_canvas_size(){
-  let canvas = info.webgl.canvas;
-  //-----------------------
-
-  // Lookup the size the browser is displaying the canvas in CSS pixels.
-  const displayWidth  = canvas.clientWidth;
-  const displayHeight = canvas.clientHeight;
-
-  // Check if the canvas is not the same size.
-  const needResize = canvas.width  !== displayWidth ||
-                     canvas.height !== displayHeight;
-
-  if (needResize) {
-    // Make the canvas the same size
-    canvas.width  = displayWidth;
-    canvas.height = displayHeight;
-  }
-
-  //-----------------------
-  return needResize;
 }
 function get_webgl_info(){
   //-----------------------

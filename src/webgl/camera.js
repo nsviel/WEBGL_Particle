@@ -1,10 +1,18 @@
+function compute_viewport(){
+  gl = info.webgl.context;
+  //-----------------------
+
+  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+  //-----------------------
+}
 function compute_mvp(){
   gl = info.webgl.context;
   //-----------------------
 
   // Create a perspective matrix, a special matrix that is
   const fieldOfView = 90 * Math.PI / 180;   // in radians
-  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+  const aspect = gl.canvas.width / gl.canvas.height;
   const zNear = 0.1;
   const zFar = 100.0;
   const proj_mat = glMatrix.mat4.create();
@@ -20,4 +28,23 @@ function compute_mvp(){
   info.webgl.mvp.mvp = modelview_mat;
 
   //-----------------------
+}
+function compute_canvas_size(){
+  let canvas = info.webgl.canvas;
+  //-----------------------
+
+  // Lookup the size the browser is displaying the canvas in CSS pixels.
+  const displayWidth  = canvas.clientWidth;
+  const displayHeight = canvas.clientHeight;
+
+  // Check if the canvas is not the same size.
+  let needResize = canvas.width !== displayWidth || canvas.height !== displayHeight;
+  if(needResize){
+    // Make the canvas the same size
+    canvas.width  = displayWidth;
+    canvas.height = displayHeight;
+  }
+
+  //-----------------------
+  return needResize;
 }

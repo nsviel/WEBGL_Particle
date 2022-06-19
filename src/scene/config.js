@@ -30,7 +30,7 @@ function init_configuration(){
   info.mouse.add_point_number = 1;
   info.mouse.over = false;
   info.mouse.xy = 0;
-  info.mouse.repusif = 0.2;
+  info.mouse.force = 0.2;
 
   //-----------------------
 }

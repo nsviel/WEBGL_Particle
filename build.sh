@@ -27,6 +27,7 @@ webgl/camera.js \
 scene/point.js \
 scene/line.js \
 scene/scene.js \
+scene/mouse.js \
 scene/config.js \
 \
 | uglifyjs -o build/particle.js
