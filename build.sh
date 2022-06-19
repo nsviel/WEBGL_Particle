@@ -9,7 +9,7 @@
 echo -e "[\e[92m#\e[0m] Build JavaScript program..."
 
 #Go to src folder
-cd src
+cd particle
 
 #Minify of all JS scripts
 cat \
@@ -18,6 +18,8 @@ specific/struct.js \
 specific/gui.js \
 specific/entropy.js \
 specific/anarpoint.js \
+specific/gl-matrix-min.js \
+specific/dat.gui.min.js \
 \
 webgl/main.js \
 webgl/webgl.js \
