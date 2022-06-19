@@ -55,16 +55,10 @@ function init_object(){
   //-----------------------
 }
 function init_scene(){
-  gl = info.webgl.context;
   //-----------------------
 
-  //Compute MVP
   compute_mvp();
-
-  //Shader
-  gl.useProgram(info.shader.program);
-  gl.uniformMatrix4fv(info.shader.uniform.in_mvp, false, info.webgl.mvp.mvp);
-  gl.uniform1f(info.shader.uniform.point_size, info.param.point_size);
+  start_sharder();
 
   //-----------------------
 }

@@ -6,8 +6,8 @@ function init_configuration(){
   info.param.nb_point_max = 200;
   info.param.speed = 0.001;
   info.param.point_size = 5;
-  info.param.line_dist_max = 0.5;
-  info.param.collision_area = 0.01;
+  info.param.line_dist_max = 200;
+  info.param.collision_area = 5;
 
   //limits
   info.param.limitless = false;
@@ -25,12 +25,12 @@ function init_configuration(){
 
   //Mouse
   info.mouse.mode = 'Repulsif';
-  info.mouse.rayon = 0.2;
+  info.mouse.rayon = 100;
   info.mouse.add_point = false;
   info.mouse.add_point_number = 1;
   info.mouse.over = false;
   info.mouse.xy = 0;
-  info.mouse.force = 0.2;
+  info.mouse.force = 0.02;
 
   //-----------------------
 }

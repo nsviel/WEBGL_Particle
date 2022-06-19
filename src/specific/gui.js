@@ -7,7 +7,7 @@ function init_gui(){
 
   //Parameters
   let param = info.webgl.gui.addFolder('Parameter');
-  param.add(info.param, 'line_dist_max', 0, 1, 0.01);
+  param.add(info.param, 'line_dist_max', 0, 500, 1);
   param.add(info.param, 'limitless', false);
 
   //Points

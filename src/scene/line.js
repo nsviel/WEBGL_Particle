@@ -40,7 +40,7 @@ function runtime_compute_distance(i){
   //-----------------------
 
   for(let j=i+1; j<object.point.xy.length; j++){
-    let dist = fct_distance(object.point.xy[i], object.point.xy[j]);
+    let dist = fct_distance_cartesian(object.point.xy[i], object.point.xy[j]);
 
     //Take for line
     if(dist < dist_max){
@@ -50,8 +50,8 @@ function runtime_compute_distance(i){
 
     //Take for collision
     if(dist < dist_col){
-      point_collision(dist, i);
-      point_collision(dist, j);
+      point_collision(i);
+      point_collision(j);
     }
   }
 
@@ -67,7 +67,7 @@ function runtime_mouse(XY, RGB){
   //Mouse centered lines
   if(info.mouse.over){
     for(let i=0; i<object.point.xy.length; i++){
-      dist = fct_distance(object.point.xy[i], info.mouse.xy)
+      dist = fct_distance_cartesian(object.point.xy[i], info.mouse.xy)
 
       //If inside mouse circle
       if(dist <= mouse_area + mouse_area / 10){

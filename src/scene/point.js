@@ -218,7 +218,7 @@ function point_recolorization(i){
 
   //-----------------------
 }
-function point_collision(dist, i){
+function point_collision(i){
   let collid_thres = info.param.collision_area;
   let collid_rgb = convert_255_to_1(info.color.collision);
   //-----------------------
@@ -255,10 +255,10 @@ function point_displacment(i){
   //-----------------------
 
   //Compute distance
-  dist = fct_distance(point, mouse_xy)
+  dist = fct_distance_cartesian(point, mouse_xy)
 
   //If inside mouse circle
-  if(dist < mouse_area && info.mouse.over){
+  if(dist < mouse_area && info.mouse.over){say("hello")
     if(info.mouse.mode == 'Repulsif'){
       point_mouse_repulsif(i, dist)
     }

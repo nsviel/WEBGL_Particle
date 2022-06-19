@@ -9,6 +9,16 @@ function init_shader(){
 
   //-----------------------
 }
+function start_sharder(){
+  gl = info.webgl.context;
+  //-----------------------
+
+  gl.useProgram(info.shader.program);
+  gl.uniformMatrix4fv(info.shader.uniform.in_mvp, false, info.webgl.mvp.mvp);
+  gl.uniform1f(info.shader.uniform.point_size, info.param.point_size);
+
+  //-----------------------
+}
 
 //Subfunctions
 function init_program(vs, fs) {
@@ -61,6 +71,7 @@ function create_shader(){
   in vec4 in_color;
   out vec4 frag_color;
   uniform float point_size;
+  uniform mat4 in_mvp;
 
   void main(){
     gl_Position = in_position;

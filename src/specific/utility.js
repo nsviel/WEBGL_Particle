@@ -16,7 +16,7 @@ function fct_distance(pt_1, pt_2){
   //-----------------------
   return dist;
 }
-function fct_distance_ratio(pt_1, pt_2){
+function fct_distance_cartesian(pt_1, pt_2){
   let canvas = info.webgl.canvas;
   //-----------------------
 
@@ -28,6 +28,16 @@ function fct_distance_ratio(pt_1, pt_2){
   //-----------------------
   return dist;
 }
+function homogeneous_to_cartesian(xy){
+  let canvas = info.webgl.canvas;
+  //-----------------------
+
+  let x = xy[0] * canvas.width;
+  let y = xy[1] * canvas.height;
+
+  return [x, y];
+}
+
 function create_matrix(m, n){
   //-----------------------
 

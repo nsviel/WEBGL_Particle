@@ -18,18 +18,17 @@ function point_mouse_repulsif(i, dist){
     vec_p[i] = point[i] - mouse_xy[i];
   }
   let theta_d = Math.atan2(vec_p[1], vec_p[0]) - Math.atan2(normal[1], normal[0]);
-
   let angle = theta_d;
   let Nx = normal[0] * Math.cos(angle) - normal[1] * Math.sin(angle);
   let Ny = normal[0] * Math.sin(angle) + normal[1] * Math.cos(angle);
-
   let norm = Math.sqrt(Math.pow(Nx, 2) + Math.pow(Ny, 2));
   normal[0] = Nx / norm;
   normal[1] = Ny / norm;
 
   //Repulsif displacment
+  let dist_n = dist / mouse_area;
+  let force_repusif = (1 - dist_n) * info.mouse.force;
   for(let i=0; i<2; i++){
-    let force_repusif = (mouse_area - dist) * info.mouse.force;
     let force_normal = normal[i] * speed * info.param.speed ;
     let vec_mouse_point = point[i] - mouse_xy[i];
     point[i] += force_repusif * vec_mouse_point + force_normal;

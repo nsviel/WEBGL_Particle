@@ -12,7 +12,7 @@ function compute_mvp(){
 
   // Create a perspective matrix, a special matrix that is
   const fieldOfView = 90 * Math.PI / 180;   // in radians
-  const aspect = canvas.clientWidth / canvas.clientHeight;
+  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
   const zNear = 0.1;
   const zFar = 100.0;
   const proj_mat = glMatrix.mat4.create();
