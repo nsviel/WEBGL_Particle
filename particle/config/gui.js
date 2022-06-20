@@ -1,10 +1,12 @@
 //Main functions
 function init_gui(){
+  let canvas = info.webgl.canvas;
   //-----------------------
 
   // Creating a GUI with options.
   info.webgl.gui = new dat.GUI({autoPlace: true, closed: true});
   info.webgl.gui.domElement.id = 'gui';
+  info.webgl.gui.width = canvas.width;
 
   //Parameters
   let param = info.webgl.gui.addFolder('Parameter');
