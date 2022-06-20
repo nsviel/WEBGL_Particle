@@ -12,7 +12,7 @@ video{
 #glcanvas{
 	z-index:-1;
 	width: 300px;
-	height: 800px;
+	height: 100vh;
 
 	position: absolute;
 	text-align: top;

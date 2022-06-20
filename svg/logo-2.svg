@@ -7,7 +7,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
@@ -16,7 +15,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="logo.svg"
+   sodipodi:docname="logo-2.svg"
    inkscape:export-filename="/home/aether/Desktop/Documents/Web/nsviel/image/logo.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -28,6 +27,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -41,9 +41,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.77771465"
-     inkscape:cx="175.01556"
-     inkscape:cy="593.73738"
+     inkscape:zoom="2.1997092"
+     inkscape:cx="407.60263"
+     inkscape:cy="625.05052"
      inkscape:window-width="1880"
      inkscape:window-height="1049"
      inkscape:window-x="40"
@@ -52,30 +52,6 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs2">
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient1344">
-      <stop
-         style="stop-color:#000000;stop-opacity:1;"
-         offset="0"
-         id="stop1340" />
-      <stop
-         style="stop-color:#000000;stop-opacity:0;"
-         offset="1"
-         id="stop1342" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient1233">
-      <stop
-         style="stop-color:#000000;stop-opacity:1;"
-         offset="0"
-         id="stop1229" />
-      <stop
-         style="stop-color:#000000;stop-opacity:0;"
-         offset="1"
-         id="stop1231" />
-    </linearGradient>
     <inkscape:path-effect
        effect="bspline"
        id="path-effect6948"
@@ -164,67 +140,14 @@
        apply_no_weight="true"
        apply_with_weight="true"
        only_selected="false" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1233"
-       id="linearGradient1235"
-       x1="122.91115"
-       y1="155.56534"
-       x2="109.06484"
-       y2="155.22269"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(5.1211895,0,0,5.1211895,-520.71225,-612.75983)" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1344"
-       id="linearGradient1346"
-       x1="123.42226"
-       y1="137.80727"
-       x2="127.01124"
-       y2="144.27359"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(5.1211895,0,0,5.1211895,-520.71225,-612.75983)" />
   </defs>
   <g
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.41594094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 106.91138,137.5081 73.158812,159.25344"
-       id="path1032"
-       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:#54555a;fill-opacity:0.84146339;stroke:#000000;stroke-width:0.41594094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 86.012977,94.388405 21.384973,-1.261451 -0.48653,44.381146 -33.23255,21.34354 -6.192696,-10.65991 -3.025446,-13.80361 -0.08604,-7.25652 0.937177,-5.31795 4.916342,-12.57446 6.618165,-8.03638 9.166856,-6.814405"
-       id="path12329"
-       sodipodi:nodetypes="ccccccccccc"
-       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:#c7c9cb;fill-opacity:0.99543381;stroke:#000000;stroke-width:0.41594094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 142.74393,155.19987 106.91138,137.5081 v 37.41618 l 10.61484,-1.35593 8.82468,-3.27587 8.08928,-5.68253 5.61569,-5.48198 z"
-       id="path13158"
-       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:#818485;fill-opacity:1;stroke:#000000;stroke-width:0.41594094px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 73.678818,158.85164 c 1.560426,1.64707 3.120392,3.29374 4.67998,4.94 2.048936,1.48166 4.09736,2.96282 6.145426,4.4436 1.922854,1.04043 3.845245,2.08043 5.767228,3.11998 1.859862,0.69378 3.719161,1.38708 5.578148,2.08002 2.096203,0.44145 4.1919,0.8828 6.28728,1.32363 1.59193,0.0553 3.18339,0.11069 4.7745,0.16535 V 137.5081 l -33.232562,21.34349"
-       id="path13894"
-       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;stroke:url(#linearGradient1235);stroke-width:0.33287731;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 37.829469,182.16498 69.081911,-44.65688 -0.0918,79.30588 -31.447814,-15.79407 z"
+       style="fill:#ffffff;fill-opacity:0.8414634;stroke:#000000;stroke-width:0.13055275;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 80.784629,152.35781 27.093561,-17.51419 -0.0361,31.10335 -12.333656,-6.19435 z"
        id="path871"
        sodipodi:nodetypes="ccccc"
        inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
@@ -232,8 +155,8 @@
        inkscape:export-ydpi="96"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:url(#linearGradient1346);stroke-width:0.33287731;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 106.91138,137.5081 0.52405,-82.389386 65.60208,34.648996 -66.12609,47.74039"
+       style="fill:#ffffff;fill-opacity:0.8414634;stroke:#000000;stroke-width:0.13055275;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 107.87819,134.84362 0.20553,-32.3127 25.72879,13.58916 -25.9343,18.72354"
        id="path873"
        inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
        inkscape:export-xdpi="96"
@@ -260,31 +183,5 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"
        inkscape:connector-curvature="0" />
-    <g
-       id="g1795"
-       style="fill:#000000;fill-opacity:1"
-       inkscape:export-filename="/home/aether/Desktop/Documents/entropium/images/logo.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96"
-       transform="matrix(5.1211894,0,0,5.1211894,-534.66069,-590.98662)">
-      <circle
-         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.0224334;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path1629"
-         cx="122.56638"
-         cy="129.00143"
-         r="0.62268853" />
-      <circle
-         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.013388;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path1629-5"
-         cx="122.58143"
-         cy="127.42274"
-         r="0.37161398" />
-      <circle
-         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.00487471;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path1629-5-8"
-         cx="122.59647"
-         cy="126.35524"
-         r="0.13530852" />
-    </g>
   </g>
 </svg>

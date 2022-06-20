@@ -6,7 +6,7 @@
 #npm install uglify-js -g
 #-------------
 
-echo -e "[\e[92m#\e[0m] Build JavaScript program..."
+echo -e "[\e[92m#\e[0m] Minify JavaScript files..."
 
 cd particle
 
@@ -36,6 +36,5 @@ config/gui.js \
 
 #Run program in browser
 cd ..
-firefox index.html
 
 #---------------------------

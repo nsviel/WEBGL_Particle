@@ -1,3 +1,31 @@
+function runtime_camera(){
+  //-----------------------
+
+  compute_canvas_size();
+  compute_viewport();
+
+  //-----------------------
+}
+
+function compute_canvas_size(){
+  let canvas = info.webgl.canvas;
+  //-----------------------
+
+  // Lookup the size the browser is displaying the canvas in CSS pixels.
+  const displayWidth  = canvas.clientWidth;
+  const displayHeight = canvas.clientHeight;
+
+  // Check if the canvas is not the same size.
+  let needResize = canvas.width !== displayWidth || canvas.height !== displayHeight;
+  if(needResize){
+    // Make the canvas the same size
+    canvas.width  = displayWidth;
+    canvas.height = displayHeight;
+  }
+
+  //-----------------------
+  return needResize;
+}
 function compute_viewport(){
   gl = info.webgl.context;
   //-----------------------
@@ -28,23 +56,4 @@ function compute_mvp(){
   info.webgl.mvp.mvp = modelview_mat;
 
   //-----------------------
-}
-function compute_canvas_size(){
-  let canvas = info.webgl.canvas;
-  //-----------------------
-
-  // Lookup the size the browser is displaying the canvas in CSS pixels.
-  const displayWidth  = canvas.clientWidth;
-  const displayHeight = canvas.clientHeight;
-
-  // Check if the canvas is not the same size.
-  let needResize = canvas.width !== displayWidth || canvas.height !== displayHeight;
-  if(needResize){
-    // Make the canvas the same size
-    canvas.width  = displayWidth;
-    canvas.height = displayHeight;
-  }
-
-  //-----------------------
-  return needResize;
 }

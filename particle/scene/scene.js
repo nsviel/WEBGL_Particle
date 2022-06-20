@@ -23,8 +23,11 @@ function loop(){
 function draw_scene(){
   //-----------------------
 
-  //Runtime functions
+  //WebGL
+  runtime_camera();
   runtime_shader();
+
+  //Runtime functions
   runtime_point();
   runtime_line();
 

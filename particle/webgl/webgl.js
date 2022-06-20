@@ -4,7 +4,6 @@ function init_wgl_context(){
 
   init_context();
   init_canvas_listener();
-  compute_canvas_size()
   compute_viewport();
 
   //-----------------------

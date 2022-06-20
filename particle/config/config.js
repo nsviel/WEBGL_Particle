@@ -41,8 +41,8 @@ function config_site(){
   //-----------------------
 
   //Parameters
-  info.param.nb_point = 100;
-  info.param.nb_point_max = 200;
+  info.param.nb_point = 150;
+  info.param.nb_point_max = 500;
   info.param.speed = 0.0005;
   info.param.point_size = 3;
   info.param.line_dist_max = 200;
@@ -64,7 +64,7 @@ function config_site(){
   info.mouse.add_point_number = 1;
   info.mouse.over = false;
   info.mouse.xy = 0;
-  info.mouse.force = 0.002;
+  info.mouse.force = 0.01;
 
   //-----------------------
 }
