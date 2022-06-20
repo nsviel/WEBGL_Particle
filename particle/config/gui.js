@@ -3,7 +3,8 @@ function init_gui(){
   //-----------------------
 
   // Creating a GUI with options.
-  info.webgl.gui = new dat.GUI();
+  info.webgl.gui = new dat.GUI({autoPlace: true, closed: true});
+  info.webgl.gui.domElement.id = 'gui';
 
   //Parameters
   let param = info.webgl.gui.addFolder('Parameter');

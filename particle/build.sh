@@ -8,11 +8,12 @@
 
 echo -e "[\e[92m#\e[0m] Build JavaScript program..."
 
+cd particle
+
 #Minify of all JS scripts
 cat \
 specific/utility.js \
 specific/struct.js \
-specific/gui.js \
 specific/entropy.js \
 specific/anarpoint.js \
 specific/gl-matrix-min.js \
@@ -29,6 +30,7 @@ scene/scene.js \
 scene/mouse.js \
 \
 config/config.js \
+config/gui.js \
 \
 | uglifyjs -o build/particle.js
 
