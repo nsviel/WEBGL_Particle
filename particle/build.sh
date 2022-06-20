@@ -8,9 +8,6 @@
 
 echo -e "[\e[92m#\e[0m] Build JavaScript program..."
 
-#Go to src folder
-cd particle
-
 #Minify of all JS scripts
 cat \
 specific/utility.js \
@@ -30,7 +27,8 @@ scene/point.js \
 scene/line.js \
 scene/scene.js \
 scene/mouse.js \
-scene/config.js \
+\
+config/config.js \
 \
 | uglifyjs -o build/particle.js
 
