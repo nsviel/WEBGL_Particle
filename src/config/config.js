@@ -51,11 +51,11 @@ function config_site(){
   info.param.limit_y = 1.5;
 
   //Colors
-  info.color.bkg = [27, 27, 27, 1];
+  info.color.bkg = [255, 255, 255, 1];
   info.color.collision = [255, 0, 0, 1];
   info.color.mouse = [0, 125, 125, 1];
-  info.color.point = [255, 255, 255, 1];
-  info.color.line = [255, 255, 255, 1];
+  info.color.point = [0, 0, 0, 1];
+  info.color.line = [0, 0, 0, 1];
 
   //Mouse
   info.mouse.mode = 'Repulsif';
@@ -65,6 +65,9 @@ function config_site(){
   info.mouse.over = false;
   info.mouse.xy = 0;
   info.mouse.force = 0.01;
+
+  //Time
+  info.time.scene = 0;
 
   //-----------------------
 }

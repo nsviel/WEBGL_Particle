@@ -9,9 +9,9 @@ video{
   z-index:0;
   left:0;
 }
-#glcanvas{
+#particle{
 	z-index:-1;
-	width: 300px;
+	width: 100vh;
 	height: 100vh;
 
 	position: absolute;

@@ -36,5 +36,9 @@ function init_gui(){
   mouse.add(info.mouse, 'add_point_number', 1, 20, 1);
   mouse.add(info.mouse, 'force', 0, 1, 0.01);
 
+  //Time
+  let time = info.webgl.gui.addFolder('Time');
+  time.add(info.time, 'scene').listen();
+
   //-----------------------
 }

@@ -45,6 +45,9 @@ var info = {
     add_point: false,
     repusif: 0,
   },
+  time:{
+    scene: 0,
+  },
 };
 
 //All scene objects info

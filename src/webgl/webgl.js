@@ -14,7 +14,7 @@ function init_context(){
   //-----------------------
 
   //Init background context
-  const canvas = document.querySelector('#glcanvas');
+  const canvas = document.querySelector('#particle');
   const gl = canvas.getContext('webgl2');
   if (!gl) {
     alert('Unable to initialize WebGL. Your browser or machine may not support it.');

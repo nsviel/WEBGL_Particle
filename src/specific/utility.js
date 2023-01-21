@@ -8,6 +8,10 @@ function toc(){
   const millis = Date.now() - start;
   say(millis)
 }
+function toc_return(){
+  const millis = Date.now() - start;
+  return millis;
+}
 function fct_distance(pt_1, pt_2){
   //-----------------------
 

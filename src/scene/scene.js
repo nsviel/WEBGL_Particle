@@ -10,9 +10,9 @@ function loop(){
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    //tic();
+    tic();
     draw_scene();
-    //toc();
+    info.time.scene = toc_return();
 
     requestAnimationFrame(render);
   }
