@@ -3,6 +3,7 @@ var info = {
   webgl:{
     canvas: 0,
     context: 0,
+    with_gui: false,
     gui: 0,
     mvp = {
       projection: 0,

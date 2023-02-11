@@ -1,5 +1,6 @@
 //Main functions
 function init_gui(){
+  if(info.webgl.with_gui == false) return;
   let canvas = info.webgl.canvas;
   //-----------------------
 
