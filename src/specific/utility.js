@@ -21,7 +21,7 @@ function fct_distance(pt_1, pt_2){
   return dist;
 }
 function fct_distance_cartesian(pt_1, pt_2){
-  let canvas = info.webgl.canvas;
+  let canvas = engine.canvas;
   //-----------------------
 
   let pt_1_xy = [pt_1[0] * canvas.width, pt_1[1] * canvas.height];
@@ -33,7 +33,7 @@ function fct_distance_cartesian(pt_1, pt_2){
   return dist;
 }
 function homogeneous_to_cartesian(xy){
-  let canvas = info.webgl.canvas;
+  let canvas = engine.canvas;
   //-----------------------
 
   let x = xy[0] * canvas.width;
@@ -76,7 +76,7 @@ function convert_255_to_1(arr_in){
   return arr_out;
 }
 function set_mouse_over(is_over){
-  info.mouse.over = is_over;
+  mouse.over = is_over;
 }
 function getRelativeMousePosition(event, target) {
   target = target || event.target;
@@ -106,9 +106,9 @@ function get_mouse_pos(e, target){
 
   // pos is in pixel coordinates for the canvas.
   // so convert to WebGL clip space coordinates
-  let value_1 = pos.x / info.webgl.canvas.width  *  2 - 1;
-  let value_2 = pos.y / info.webgl.canvas.height * -2 + 1;
-  info.mouse.xy = ([value_1, value_2]);
+  let value_1 = pos.x / engine.canvas.width  *  2 - 1;
+  let value_2 = pos.y / engine.canvas.height * -2 + 1;
+  mouse.xy = ([value_1, value_2]);
 }
 function sort_by_indice(arr){
   var indices = new Array(arr.length);

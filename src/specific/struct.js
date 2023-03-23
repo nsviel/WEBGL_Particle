@@ -15,17 +15,15 @@ var color = {
   bkg: 0,
 };
 
-var info = {
-  webgl:{
-    canvas: 0,
-    context: 0,
-    with_gui: false,
-    gui: 0,
-    mvp = {
-      projection: 0,
-      modelview: 0,
-      mvp: 0,
-    },
+var engine = {
+  canvas: 0,
+  context: 0,
+  with_gui: false,
+  gui: 0,
+  mvp = {
+    projection: 0,
+    modelview: 0,
+    mvp: 0,
   },
   shader:{
     program: 0,
@@ -39,15 +37,19 @@ var info = {
       is_point: false,
     },
   },
-  mouse:{
-    rayon: 0,
-    over: false,
-    xy: 0,
-    color: 0,
-    add_point_number: 0,
-    add_point: false,
-    repusif: 0,
-  },
+};
+
+var mouse = {
+  rayon: 0,
+  over: false,
+  xy: 0,
+  color: 0,
+  add_point_number: 0,
+  add_point: false,
+  repusif: 0,
+};
+
+var info = {
   time:{
     scene: 0,
   },

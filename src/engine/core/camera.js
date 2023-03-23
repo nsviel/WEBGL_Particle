@@ -8,7 +8,7 @@ function runtime_camera(){
 }
 
 function compute_canvas_size(){
-  let canvas = info.webgl.canvas;
+  let canvas = engine.canvas;
   //-----------------------
 
   // Lookup the size the browser is displaying the canvas in CSS pixels.
@@ -27,7 +27,7 @@ function compute_canvas_size(){
   return needResize;
 }
 function compute_viewport(){
-  gl = info.webgl.context;
+  gl = engine.context;
   //-----------------------
 
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -35,7 +35,7 @@ function compute_viewport(){
   //-----------------------
 }
 function compute_mvp(){
-  gl = info.webgl.context;
+  gl = engine.context;
   //-----------------------
 
   // Create a perspective matrix, a special matrix that is
@@ -51,9 +51,9 @@ function compute_mvp(){
   const modelview_mat = glMatrix.mat4.create();
 
   //Stock info into a dedicated structure
-  info.webgl.mvp.projection = proj_mat;
-  info.webgl.mvp.modelview = modelview_mat;
-  info.webgl.mvp.mvp = modelview_mat;
+  engine.mvp.projection = proj_mat;
+  engine.mvp.modelview = modelview_mat;
+  engine.mvp.mvp = modelview_mat;
 
   //-----------------------
 }

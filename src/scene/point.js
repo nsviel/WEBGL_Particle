@@ -24,7 +24,6 @@ function runtime_point(){
   point_manage_quantity();
 
   for(let i=0; i<object.point.xy.length; i++){
-    point_anarchiste(i);
     point_displacment(i);
     point_manage_limit(i);
     point_recolorization(i);
@@ -72,13 +71,13 @@ function add_points_xy(xy){
 function add_point_mouse(){
   //-----------------------
 
-  if(info.mouse.add_point && object.point.nb_point < param.nb_point_max){
-    let nb_point = info.mouse.add_point_number;
+  if(mouse.add_point && object.point.nb_point < param.nb_point_max){
+    let nb_point = mouse.add_point_number;
     [XY, RGB, Nxy, Sp] = create_points(nb_point);
 
     for(let i=0; i<XY.length; i++){
-      XY[i][0] = info.mouse.xy[0] + getRandomArbitrary(-0.01, 0.01);
-      XY[i][1] = info.mouse.xy[1] + getRandomArbitrary(-0.01, 0.01);
+      XY[i][0] = mouse.xy[0] + getRandomArbitrary(-0.01, 0.01);
+      XY[i][1] = mouse.xy[1] + getRandomArbitrary(-0.01, 0.01);
     }
 
     //Store data
@@ -246,8 +245,8 @@ function point_manage_quantity(){
   //-----------------------
 }
 function point_displacment(i){
-  let mouse_xy = info.mouse.xy;
-  let mouse_area = info.mouse.rayon;
+  let mouse_xy = mouse.xy;
+  let mouse_area = mouse.rayon;
   let point = object.point.xy[i];
   let normal = object.point.nxy[i];
   let speed = object.point.speed[i];
@@ -257,14 +256,14 @@ function point_displacment(i){
   dist = fct_distance_cartesian(point, mouse_xy)
 
   //If inside mouse circle
-  if(dist < mouse_area && info.mouse.over){
-    if(info.mouse.mode == 'Repulsif'){
+  if(dist < mouse_area && mouse.over){
+    if(mouse.mode == 'Repulsif'){
       point_mouse_repulsif(i, dist)
     }
-    else if(info.mouse.mode == 'Black_hole'){
+    else if(mouse.mode == 'Black_hole'){
       point_mouse_blackhole(i, dist)
     }
-    else if(info.mouse.mode == 'selection'){
+    else if(mouse.mode == 'selection'){
       point_mouse_selection(i, dist)
     }
   }
@@ -299,14 +298,6 @@ function point_manage_limit(i){
     point[1] = param.limit_y;
     normal[1] = -normal[1];
   }
-
-  //-----------------------
-}
-function point_anarchiste(i){
-  let point = object.point.xy[i];
-  let normal = object.point.nxy[i];
-  //-----------------------
-
 
   //-----------------------
 }

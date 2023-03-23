@@ -23,13 +23,13 @@ function init_context(){
 
   gl.enable(gl.DEPTH_TEST)
 
-  info.webgl.context = gl;
-  info.webgl.canvas = canvas;
+  engine.context = gl;
+  engine.canvas = canvas;
 
   //-----------------------
 }
 function init_canvas_listener(){
-  let canvas = info.webgl.canvas;
+  let canvas = engine.canvas;
   //-----------------------
 
   canvas.addEventListener("mouseover", event => set_mouse_over(true));
@@ -50,20 +50,22 @@ function get_webgl_info(){
 
 //Object functions
 function draw_object(data){
-  gl = info.webgl.context;
+  gl = engine.context;
   vbo_xy = data.vbo_xy;
   vbo_rgb = data.vbo_rgb;
   //-----------------------
 
+   gl_PointSize = 20.0;
+
   //Location
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo_xy);
-  gl.vertexAttribPointer(info.shader.attribut.location, 2, gl.FLOAT, false, 0, 0);
-  gl.enableVertexAttribArray(info.shader.attribut.location);
+  gl.vertexAttribPointer(engine.shader.attribut.location, 2, gl.FLOAT, false, 0, 0);
+  gl.enableVertexAttribArray(engine.shader.attribut.location);
 
   //Color
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo_rgb);
-  gl.vertexAttribPointer(info.shader.attribut.color, 4, gl.FLOAT, false, 0, 0);
-  gl.enableVertexAttribArray(info.shader.attribut.color);
+  gl.vertexAttribPointer(engine.shader.attribut.color, 4, gl.FLOAT, false, 0, 0);
+  gl.enableVertexAttribArray(engine.shader.attribut.color);
 
   //Draw
   gl.drawArrays(data.draw_type, 0, data.xy.length);
@@ -71,7 +73,7 @@ function draw_object(data){
   //-----------------------
 }
 function create_object(data){
-  gl = info.webgl.context;
+  gl = engine.context;
   vbo_xy = data.vbo_xy;
   vbo_rgb = data.vbo_rgb;
   //-----------------------
@@ -99,7 +101,7 @@ function create_object(data){
   //-----------------------
 }
 function update_object(data){
-  gl = info.webgl.context;
+  gl = engine.context;
   vbo_xy = data.vbo_xy;
   vbo_rgb = data.vbo_rgb;
   //-----------------------

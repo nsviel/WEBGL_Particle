@@ -44,10 +44,12 @@ src/specific/anarpoint.js \
 src/specific/gl-matrix-min.js \
 src/specific/dat.gui.min.js \
 \
-src/engine/webgl.js \
-src/engine/shader.js \
-src/engine/camera.js \
-src/engine/loop.js \
+src/engine/core/webgl.js \
+src/engine/core/camera.js \
+src/engine/core/loop.js \
+src/engine/shader/shader.js \
+src/engine/shader/vertex.js \
+src/engine/shader/fragment.js \
 \
 src/scene/point.js \
 src/scene/line.js \

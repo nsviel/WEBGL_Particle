@@ -1,7 +1,7 @@
 function init_configuration(){
   //-----------------------
 
-  info.mouse.xy = 0;
+  mouse.xy = 0;
   info.time.scene = 0;
 
 

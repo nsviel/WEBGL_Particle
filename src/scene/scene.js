@@ -48,7 +48,7 @@ function init_scene(){
 function draw_point(){
   //-----------------------
 
-  gl.uniform1i(info.shader.uniform.is_point, 1);
+  gl.uniform1i(engine.shader.uniform.is_point, 1);
   update_object(object.point);
   draw_object(object.point);
 
@@ -58,7 +58,7 @@ function draw_line(){
   //-----------------------
 
   //Draw object.line
-  gl.uniform1i(info.shader.uniform.is_point, 0);
+  gl.uniform1i(engine.shader.uniform.is_point, 0);
   update_object(object.line);
   draw_object(object.line);
 

@@ -1,6 +1,6 @@
 //Main functions
 function loop(){
-  let gl = info.webgl.context;
+  let gl = engine.context;
   //-----------------------
 
   //main loop

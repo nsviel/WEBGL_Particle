@@ -1,5 +1,5 @@
 // WebGL stuff
-info.webgl.with_gui = false;
+engine.with_gui = false;
 
 //Parameters
 param.nb_point = 150;
@@ -19,13 +19,13 @@ color.point = [0, 0, 0, 1];
 color.line = [0, 0, 0, 1];
 
 //Mouse
-info.mouse.mode = 'Repulsif';
-info.mouse.rayon = 100;
-info.mouse.add_point = false;
-info.mouse.add_point_number = 1;
-info.mouse.over = false;
-info.mouse.xy = 0;
-info.mouse.force = 0.01;
+mouse.mode = 'Repulsif';
+mouse.rayon = 100;
+mouse.add_point = false;
+mouse.add_point_number = 1;
+mouse.over = false;
+mouse.xy = 0;
+mouse.force = 0.01;
 
 //Time
 info.time.scene = 0;

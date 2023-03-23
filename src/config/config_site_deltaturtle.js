@@ -1,5 +1,5 @@
 // WebGL stuff
-info.webgl.with_gui = true;
+engine.with_gui = true;
 
 //Parameters
 param.nb_point = 100;
@@ -19,9 +19,9 @@ color.point = [255, 255, 255, 255];
 color.line = [255, 255, 255, 255];
 
 //Mouse
-info.mouse.mode = "selection";
-info.mouse.rayon = 100;
-info.mouse.add_point = true;
-info.mouse.add_point_number = 1;
-info.mouse.over = false;
-info.mouse.force = 0.02;
+mouse.mode = "selection";
+mouse.rayon = 100;
+mouse.add_point = true;
+mouse.add_point_number = 1;
+mouse.over = false;
+mouse.force = 0.02;
