@@ -5,7 +5,7 @@ function loop(){
 
   //main loop
   function render(){
-    let rgb = convert_255_to_1(info.color.bkg);
+    let rgb = convert_255_to_1(color.bkg);
     gl.clearColor(rgb[0], rgb[1], rgb[2], rgb[3]);
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);

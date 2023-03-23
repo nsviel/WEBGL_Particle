@@ -15,7 +15,7 @@ function start_sharder(){
 
   gl.useProgram(info.shader.program);
   gl.uniformMatrix4fv(info.shader.uniform.in_mvp, false, info.webgl.mvp.mvp);
-  gl.uniform1f(info.shader.uniform.point_size, info.param.point_size);
+  gl.uniform1f(info.shader.uniform.point_size, param.point_size);
 
   //-----------------------
 }
@@ -58,7 +58,7 @@ function init_params(){
   //-----------------------
 }
 function runtime_shader(){
-  gl.uniform1f(info.shader.uniform.point_size, info.param.point_size);
+  gl.uniform1f(info.shader.uniform.point_size, param.point_size);
 }
 function create_shader(){
   //-----------------------

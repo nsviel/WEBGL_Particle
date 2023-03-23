@@ -34,8 +34,8 @@ function runtime_line_all(XY, RGB){
   //-----------------------
 }
 function runtime_compute_distance(i){
-  let dist_col = info.param.collision_area;
-  let dist_max = info.param.line_dist_max;
+  let dist_col = param.collision_area;
+  let dist_max = param.line_dist_max;
   let dist_vec = new Array();
   //-----------------------
 
@@ -59,8 +59,8 @@ function runtime_compute_distance(i){
   return dist_vec;
 }
 function runtime_mouse(XY, RGB){
-  let rgb_mou = convert_255_to_1(info.color.mouse);
-  let rgb_bkg = convert_255_to_1(info.color.bkg);
+  let rgb_mou = convert_255_to_1(color.mouse);
+  let rgb_bkg = convert_255_to_1(color.bkg);
   let mouse_area = info.mouse.rayon;
   //-----------------------
 
@@ -89,8 +89,8 @@ function runtime_mouse(XY, RGB){
   //-----------------------
 }
 function create_line_all(XY, RGB, dist_vec, i){
-  let rgb_obj = convert_255_to_1(info.color.line);
-  let rgb_bkg = convert_255_to_1(info.color.bkg);
+  let rgb_obj = convert_255_to_1(color.line);
+  let rgb_bkg = convert_255_to_1(color.bkg);
   //-----------------------
 
   for(let j=0; j<dist_vec.length; j++){

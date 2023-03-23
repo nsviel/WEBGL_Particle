@@ -72,7 +72,7 @@ function add_points_xy(xy){
 function add_point_mouse(){
   //-----------------------
 
-  if(info.mouse.add_point && object.point.nb_point < info.param.nb_point_max){
+  if(info.mouse.add_point && object.point.nb_point < param.nb_point_max){
     let nb_point = info.mouse.add_point_number;
     [XY, RGB, Nxy, Sp] = create_points(nb_point);
 
@@ -89,15 +89,15 @@ function add_point_mouse(){
 
     //Main info
     object.point.nb_point = object.point.xy.length;
-    info.param.nb_point += XY.length;
+    param.nb_point += XY.length;
   }
 
   //-----------------------
 }
 function create_points(nb_point){
-  let lim_x = info.param.limit_x;
-  let lim_y = info.param.limit_y;
-  let rgb = convert_255_to_1(info.color.point);
+  let lim_x = param.limit_x;
+  let lim_y = param.limit_y;
+  let rgb = convert_255_to_1(color.point);
   //-----------------------
 
   //Location
@@ -138,7 +138,7 @@ function create_points_bordure(){
 
   //Location
   let X, Y;
-  let rgb = get_value(info.color.point);
+  let rgb = get_value(color.point);
   let topright = randomDigit(0, 1);
   if(topright == 0){
     X = getRandomArbitrary(-1.5, 1.5);
@@ -198,7 +198,7 @@ function remove_point_bordure(point){
 
 //Action functions
 function point_recolorization(i){
-  let rgb_obj = convert_255_to_1(info.color.point);
+  let rgb_obj = convert_255_to_1(color.point);
   let rgb_pt = object.point.rgb[i];
   let rgb_rate = 0.025;
   //-----------------------
@@ -218,8 +218,8 @@ function point_recolorization(i){
   //-----------------------
 }
 function point_collision(i){
-  let collid_thres = info.param.collision_area;
-  let collid_rgb = convert_255_to_1(info.color.collision);
+  let collid_thres = param.collision_area;
+  let collid_rgb = convert_255_to_1(color.collision);
   //-----------------------
 
   //point_collision action
@@ -233,7 +233,7 @@ function point_collision(i){
   //-----------------------
 }
 function point_manage_quantity(){
-  let query_number = info.param.nb_point;
+  let query_number = param.nb_point;
   let diff = query_number - object.point.nb_point;
   //-----------------------
 
@@ -264,12 +264,15 @@ function point_displacment(i){
     else if(info.mouse.mode == 'Black_hole'){
       point_mouse_blackhole(i, dist)
     }
+    else if(info.mouse.mode == 'selection'){
+      point_mouse_selection(i, dist)
+    }
   }
   //Default displacment
   else{
-    let mouse_rgb = convert_255_to_1(info.color.mouse);
-    point[0] += normal[0] * speed * info.param.speed;
-    point[1] += normal[1] * speed * info.param.speed;
+    let mouse_rgb = convert_255_to_1(color.mouse);
+    point[0] += normal[0] * speed * param.speed;
+    point[1] += normal[1] * speed * param.speed;
   }
 
   //-----------------------
@@ -280,20 +283,20 @@ function point_manage_limit(i){
   //-----------------------
 
   //Area borders
-  if(point[0] < -info.param.limit_x){
-    point[0] = -info.param.limit_x;
+  if(point[0] < -param.limit_x){
+    point[0] = -param.limit_x;
     normal[0] = -normal[0];
   }
-  if(point[0] > info.param.limit_x){
-    point[0] = info.param.limit_x;
+  if(point[0] > param.limit_x){
+    point[0] = param.limit_x;
     normal[0] = -normal[0];
   }
-  if(point[1] < -info.param.limit_y){
-    point[1] = -info.param.limit_y;
+  if(point[1] < -param.limit_y){
+    point[1] = -param.limit_y;
     normal[1] = -normal[1];
   }
-  if(point[1] > info.param.limit_y){
-    point[1] = info.param.limit_y;
+  if(point[1] > param.limit_y){
+    point[1] = param.limit_y;
     normal[1] = -normal[1];
   }
 

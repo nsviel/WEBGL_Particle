@@ -1,4 +1,20 @@
 //All webgl program info
+var param = {
+  nb_point: 0,
+  nb_point_max: 0,
+  speed: 0,
+  line_dist_max: 0,
+  limit_x: 0,
+  limit_y: 0,
+  collision_area: 0,
+};
+
+var color = {
+  dark_mode: false,
+  collision: 0,
+  bkg: 0,
+};
+
 var info = {
   webgl:{
     canvas: 0,
@@ -22,20 +38,6 @@ var info = {
       point_size: 5,
       is_point: false,
     },
-  },
-  param:{
-    nb_point: 0,
-    nb_point_max: 0,
-    speed: 0,
-    line_dist_max: 0,
-    limit_x: 0,
-    limit_y: 0,
-    collision_area: 0,
-  },
-  color:{
-    dark_mode: false,
-    collision: 0,
-    bkg: 0,
   },
   mouse:{
     rayon: 0,

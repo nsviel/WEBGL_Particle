@@ -18,7 +18,7 @@ function draw_scene(){
 
 //Init functions
 function init_object(){
-  let point_number = info.param.nb_point;
+  let point_number = param.nb_point;
   //-----------------------
 
   //Init objects

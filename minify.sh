@@ -11,8 +11,8 @@ echo -e "[\e[92m#\e[0m] Minify JavaScript files..."
 # Selected desired configuration
 echo -e "[\e[92m#\e[0m] List of available configurations:"
 echo ----------------------
-config_name=("default" "config_1" "config_2" "config3")
-config_array=("config_default.js" "config_1.js" "config_2.js" "config_3.js")
+config_name=("config_site_deltaturtle" "config_site_nsv" "config_blackOnWhite" "config_whiteOnBlack")
+config_array=("config_site_deltaturtle.js" "config_site_nsv.js" "config_blackOnWhite.js" "config_whiteOnBlack.js")
 cpt=0
 for str in ${config_name[@]};
 do
@@ -24,7 +24,7 @@ echo ----------------------
 # Get selected device
 echo -ne "[\e[92m#\e[0m] Configuration number [default: \e[92m0\e[0m]: "
 read config_nb
-if [ -z "${config_nb}" ]; then conf_selected="config_default.js";
+if [ -z "${config_nb}" ]; then conf_selected=${config_array[0]};
 else
     cpt=0
     for str in ${config_array[@]};
@@ -44,20 +44,20 @@ src/specific/anarpoint.js \
 src/specific/gl-matrix-min.js \
 src/specific/dat.gui.min.js \
 \
-src/webgl/webgl.js \
-src/webgl/shader.js \
-src/webgl/camera.js \
+src/engine/webgl.js \
+src/engine/shader.js \
+src/engine/camera.js \
+src/engine/loop.js \
 \
 src/scene/point.js \
 src/scene/line.js \
 src/scene/scene.js \
 src/scene/mouse.js \
 \
-src/config/state.js \
-src/config/gui.js \
+src/gui/state.js \
+src/gui/gui.js \
 src/config/$conf_selected \
 \
-src/loop.js \
 src/main.js \
 \
 | uglifyjs -o build/particle.js

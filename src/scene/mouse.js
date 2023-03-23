@@ -1,7 +1,7 @@
 function point_mouse_repulsif(i, dist){
   let mouse_xy = info.mouse.xy;
   let mouse_area = info.mouse.rayon;
-  let mouse_rgb = convert_255_to_1(info.color.mouse);
+  let mouse_rgb = convert_255_to_1(color.mouse);
   let point = object.point.xy[i];
   let normal = object.point.nxy[i];
   let speed = object.point.speed[i];
@@ -29,7 +29,7 @@ function point_mouse_repulsif(i, dist){
   let dist_n = dist / mouse_area;
   let force_repusif = (1 - dist_n) * info.mouse.force;
   for(let i=0; i<2; i++){
-    let force_normal = normal[i] * speed * info.param.speed ;
+    let force_normal = normal[i] * speed * param.speed ;
     let vec_mouse_point = point[i] - mouse_xy[i];
     point[i] += force_repusif * vec_mouse_point + force_normal;
     point[i] += force_repusif * vec_mouse_point + force_normal;
@@ -40,7 +40,7 @@ function point_mouse_repulsif(i, dist){
 function point_mouse_blackhole(i, dist){
   let mouse_xy = info.mouse.xy;
   let mouse_area = info.mouse.rayon;
-  let mouse_rgb = convert_255_to_1(info.color.mouse);
+  let mouse_rgb = convert_255_to_1(color.mouse);
   let point = object.point.xy[i];
   let normal = object.point.nxy[i];
   let color = object.point.rgb[i];
@@ -53,11 +53,23 @@ function point_mouse_blackhole(i, dist){
   //Repulsif displacment
   for(let i=0; i<2; i++){
     let force_attractive = (dist) * info.mouse.force;
-    let force_normal = normal[i] * speed * info.param.speed ;
+    let force_normal = normal[i] * speed * param.speed ;
     let vec_mouse_point = mouse_xy[i] - point[i];
     point[i] += force_attractive * vec_mouse_point + force_normal;
     point[i] += force_attractive * vec_mouse_point + force_normal;
   }
+
+  //-----------------------
+}
+
+function point_mouse_selection(i, dist){
+  let mouse_xy = info.mouse.xy;
+  let mouse_rgb = convert_255_to_1(color.mouse);
+  let point = object.point.xy[i];
+  //-----------------------
+
+  //Color
+  point.rgb = mouse_rgb;
 
   //-----------------------
 }
